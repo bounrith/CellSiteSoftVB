@@ -535,11 +535,12 @@ Public Class CellSiteSoftMain
         k = 0
         'Add images to imageList1.
         For i = 0 To AllFiles.Length - 1
-            If AllFiles(i).Contains(".jpg") Then
+            If AllFiles(i).Contains(".jpg") Or AllFiles(i).Contains(".JPG") Then
                 pname = Path.GetFullPath(AllFiles(i))
                 fname = Path.GetFileName(AllFiles(i))
                 myImage = Image.FromFile(pname)
                 imageList.Images.Add(myImage)
+                myImage.Dispose()
                 'Dim listViewItem(k) As ListViewItem = New ListViewItem(fname, j)
                 'Add listViewItem1 and listViewItem2.
                 Dim listViewItemTmp As ListViewItem = New ListViewItem(fname, j)
