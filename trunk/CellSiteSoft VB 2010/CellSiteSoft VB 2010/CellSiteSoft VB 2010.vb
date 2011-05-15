@@ -14,7 +14,7 @@ Public Class CellSiteSoftMain
     Dim box3_index As Integer = 0
     Dim file_browse_index As Integer = 0
     Dim image_full_path As String
-
+    Dim thread As System.Threading.Thread
     Dim open_excel As Boolean = False
     Dim Excel_App As Excel.Application
     Dim Excel_Workbook As Excel.Workbook
@@ -26,6 +26,8 @@ Public Class CellSiteSoftMain
         Load_Drives()
         Load_Category()
         FolderBrowserDialog1.SelectedPath = System.IO.Directory.GetCurrentDirectory()
+        thread = New System.Threading.Thread(AddressOf ImageList_Load)
+        Control.CheckForIllegalCrossThreadCalls = False
         'SetEnabled()
     End Sub
 
@@ -91,13 +93,9 @@ Public Class CellSiteSoftMain
 
     ' Changed from Public to private
     Private Sub DirectoryTreeView_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles DirectoryTreeView.AfterSelect
-        Dim temp_image As Image
         Dim split1 As String()
-        Dim split2 As String()
         Dim clean_path As String
         Dim number_of_split As Integer
-        Dim split2_upper_bound As Integer
-        Dim number_of_images_built As Integer = 0
 
         'MsgBox("The Orginal Path is: " & DirectoryTreeView.SelectedNode.FullPath.ToString)
         split1 = Split(DirectoryTreeView.SelectedNode.FullPath.ToString, "\\")
@@ -112,259 +110,13 @@ Public Class CellSiteSoftMain
 
         'FileListView.Clear()
         AllFiles = Directory.GetFiles(clean_path, "*.*", SearchOption.TopDirectoryOnly)
+        ThumbnailView()
 
-        imageList.TransparentColor = Color.Blue
-        imageList.ColorDepth = ColorDepth.Depth32Bit
-        imageList.ImageSize = New Size(190, 110)
-
-        total_files = AllFiles.Count
-        ReDim file_full_path(15) 'Keep Track of 15 images file paths
-
-        '======================================================================================
-
-        While ((number_of_images_built < 15) And (file_browse_index <= (total_files - 1)))
-            split2 = Split(AllFiles(file_browse_index), ".")
-            split2_upper_bound = UBound(split2)
-            '````````Building up Image List ```````````````````````````
-            If (split2(split2_upper_bound) = "jpg" Or split2(split2_upper_bound) = "JPG") Then
-                temp_image = Image.FromFile(AllFiles(file_browse_index))
-                file_full_path(number_of_images_built) = AllFiles(file_browse_index).ToString ' Save image's full path
-                imageList.Images.Add(temp_image)
-                number_of_images_built = number_of_images_built + 1
-            End If
-            file_browse_index = file_browse_index + 1
-        End While
-
-
-        '=======================================================================================
-
-        'MsgBox("Total Files " & total_files)
-        'MsgBox("Total Images " & imageList.Images.Count)
-        If (number_of_images_built > 0) Then
-            PictureBox1.Image = imageList.Images.Item(0)
-        End If
-
-        If (number_of_images_built > 1) Then
-            PictureBox2.Image = imageList.Images.Item(1)
-        End If
-
-        If (number_of_images_built > 2) Then
-            PictureBox3.Image = imageList.Images.Item(2)
-        End If
-        If (number_of_images_built > 3) Then
-            PictureBox4.Image = imageList.Images.Item(3)
-        End If
-
-        If (number_of_images_built > 4) Then
-            PictureBox5.Image = imageList.Images.Item(4)
-        End If
-        If (number_of_images_built > 5) Then
-            PictureBox6.Image = imageList.Images.Item(5)
-        End If
-
-        If (number_of_images_built > 6) Then
-            PictureBox7.Image = imageList.Images.Item(6)
-        End If
-
-        If (number_of_images_built > 7) Then
-            PictureBox8.Image = imageList.Images.Item(7)
-        End If
-        If (number_of_images_built > 8) Then
-            PictureBox9.Image = imageList.Images.Item(8)
-        End If
-
-        If (number_of_images_built > 9) Then
-            PictureBox10.Image = imageList.Images.Item(9)
-        End If
-
-        If (number_of_images_built > 10) Then
-            PictureBox11.Image = imageList.Images.Item(10)
-        End If
-        If (number_of_images_built > 11) Then
-            PictureBox12.Image = imageList.Images.Item(11)
-        End If
-
-        If (number_of_images_built > 12) Then
-            PictureBox13.Image = imageList.Images.Item(12)
-        End If
-        If (number_of_images_built > 13) Then
-            PictureBox14.Image = imageList.Images.Item(13)
-        End If
-
-        If (number_of_images_built > 14) Then
-            PictureBox15.Image = imageList.Images.Item(14)
-        End If
-
-        '========= Reset the number_of_images_built to empty or zero ===================
-        number_of_images_built = 0
-        imageList.Images.Clear()
-        'MsgBox("Total Images " & imageList.Images.Count)
-        If file_browse_index >= total_files Then
-            file_browse_index = 0
-            MsgBox("*** End OF List ***")
-        End If
 
     End Sub
 
 
-    Private Sub Next_Picture_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Next_Picture.Click
-        Dim split3 As String()
-        Dim split3_upper_bound As Integer
-        Dim temp2_image As Image
-        Dim number_of_images_built2 As Integer = 0
 
-        '====================================================================================================
-        Try
-            While ((number_of_images_built2 < 15) And (file_browse_index <= (total_files - 1)))
-                split3 = Split(AllFiles(file_browse_index), ".")
-                split3_upper_bound = UBound(split3)
-                '````````Building up Image List ```````````````````````````
-                If (split3(split3_upper_bound) = "jpg" Or split3(split3_upper_bound) = "JPG") Then
-                    temp2_image = Image.FromFile(AllFiles(file_browse_index))
-                    file_full_path(number_of_images_built2) = AllFiles(file_browse_index).ToString ' Save image's full path
-                    imageList.Images.Add(temp2_image)
-                    temp2_image.Dispose()
-                    number_of_images_built2 = number_of_images_built2 + 1
-                End If
-                file_browse_index = file_browse_index + 1
-            End While
-        Catch ex As IndexOutOfRangeException
-            MsgBox("Catch File Index = " & file_browse_index)
-        End Try
-
-        '=========================================================================================================
-        MsgBox("Image List Count = " & imageList.Images.Count)
-
-        If (number_of_images_built2 > 0) Then
-            PictureBox1.Image = imageList.Images.Item(0)
-        End If
-
-        If (number_of_images_built2 > 1) Then
-            PictureBox2.Image = imageList.Images.Item(1)
-        End If
-
-        If (number_of_images_built2 > 2) Then
-            PictureBox3.Image = imageList.Images.Item(2)
-        End If
-        If (number_of_images_built2 > 3) Then
-            PictureBox4.Image = imageList.Images.Item(3)
-        End If
-
-        If (number_of_images_built2 > 4) Then
-            PictureBox5.Image = imageList.Images.Item(4)
-        End If
-        If (number_of_images_built2 > 5) Then
-            PictureBox6.Image = imageList.Images.Item(5)
-        End If
-
-        If (number_of_images_built2 > 6) Then
-            PictureBox7.Image = imageList.Images.Item(6)
-        End If
-
-        If (number_of_images_built2 > 7) Then
-            PictureBox8.Image = imageList.Images.Item(7)
-        End If
-        If (number_of_images_built2 > 8) Then
-            PictureBox9.Image = imageList.Images.Item(8)
-        End If
-
-        If (number_of_images_built2 > 9) Then
-            PictureBox10.Image = imageList.Images.Item(9)
-        End If
-
-        If (number_of_images_built2 > 10) Then
-            PictureBox11.Image = imageList.Images.Item(10)
-        End If
-        If (number_of_images_built2 > 11) Then
-            PictureBox12.Image = imageList.Images.Item(11)
-        End If
-
-        If (number_of_images_built2 > 12) Then
-            PictureBox13.Image = imageList.Images.Item(12)
-        End If
-        If (number_of_images_built2 > 13) Then
-            PictureBox14.Image = imageList.Images.Item(13)
-        End If
-
-        If (number_of_images_built2 > 14) Then
-            PictureBox15.Image = imageList.Images.Item(14)
-        End If
-        '=============== Reset number_of_images_built2 to empty or zero ============================================
-
-        number_of_images_built2 = 0
-        imageList.Images.Clear()
-
-        MsgBox("Image List Count = " & imageList.Images.Count)
-
-        If file_browse_index >= total_files Then
-            file_browse_index = 0
-            MsgBox("*** End Of LIST ***")
-        End If
-
-    End Sub
-
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
-        MsgBox("Image 1 Selected")
-        image_full_path = file_full_path(0)
-    End Sub
-
-    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
-        MsgBox("Image 2 Selected")
-        image_full_path = file_full_path(1)
-    End Sub
-
-    Private Sub PictureBox3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox3.Click
-        MsgBox("Image 3 Selected")
-        image_full_path = file_full_path(2)
-    End Sub
-    Private Sub PictureBox4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox4.Click
-        MsgBox("Image 4 Selected")
-        image_full_path = file_full_path(3)
-    End Sub
-    Private Sub PictureBox5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox5.Click
-        MsgBox("Image 5 Selected")
-        image_full_path = file_full_path(4)
-    End Sub
-    Private Sub PictureBox6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox6.Click
-        MsgBox("Image 6 Selected")
-        image_full_path = file_full_path(5)
-    End Sub
-    Private Sub PictureBox7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox7.Click
-        MsgBox("Image 7 Selected")
-        image_full_path = file_full_path(6)
-    End Sub
-    Private Sub PictureBox8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox8.Click
-        MsgBox("Image 8 Selected")
-        image_full_path = file_full_path(7)
-    End Sub
-    Private Sub PictureBox9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox9.Click
-        MsgBox("Image 9 Selected")
-        image_full_path = file_full_path(8)
-    End Sub
-    Private Sub PictureBox10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox10.Click
-        MsgBox("Image 10 Selected")
-        image_full_path = file_full_path(9)
-    End Sub
-    Private Sub PictureBox11_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox11.Click
-        MsgBox("Image 11 Selected")
-        image_full_path = file_full_path(10)
-    End Sub
-    Private Sub PictureBox12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox12.Click
-        MsgBox("Image 12 Selected")
-        image_full_path = file_full_path(11)
-    End Sub
-    Private Sub PictureBox13_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox13.Click
-        MsgBox("Image 13 Selected")
-        image_full_path = file_full_path(12)
-    End Sub
-    Private Sub PictureBox14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox14.Click
-        MsgBox("Image 14 Selected")
-        image_full_path = file_full_path(13)
-    End Sub
-    Private Sub PictureBox15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox15.Click
-        MsgBox("Image 15 Selected")
-        image_full_path = file_full_path(14)
-    End Sub
     Private Sub cmdCategory_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCategory.SelectedIndexChanged
         Select Case (cmdCategory.SelectedItem.ToString)
             Case "ALPHA SECTOR"
@@ -765,6 +517,58 @@ Public Class CellSiteSoftMain
         lstFileNames.Items.Add("139_" & txtSiteID.Text & "_Cabinet_Overview")
 
     End Sub
+    Private Sub ImageList_Load()
+        Dim i, j, k As Integer
+        Dim pname As String
+        Dim fname As String
+        'Dim fname As String
+        'Dim files As String() = Directory.GetFiles(File1.Path)
+        Dim myImage As Image
+        Dim listViewItem(3) As ListViewItem
+        ListView1.LargeImageList = imageList
+        'Set the ColorDepth and ImageSize properties of imageList1.
+        imageList.TransparentColor = Color.Blue
+        imageList.ColorDepth = ColorDepth.Depth32Bit
+        imageList.ImageSize = New Size(200, 170)
+
+        j = 0
+        k = 0
+        'Add images to imageList1.
+        For i = 0 To AllFiles.Length - 1
+            If AllFiles(i).Contains(".jpg") Then
+                pname = Path.GetFullPath(AllFiles(i))
+                fname = Path.GetFileName(AllFiles(i))
+                myImage = Image.FromFile(pname)
+                imageList.Images.Add(myImage)
+                'Dim listViewItem(k) As ListViewItem = New ListViewItem(fname, j)
+                'Add listViewItem1 and listViewItem2.
+                Dim listViewItemTmp As ListViewItem = New ListViewItem(fname, j)
+                listViewItem(k) = listViewItemTmp
+                'ListView1.Items.AddRange(New ListViewItem() {listViewItem(0), listViewItem(1), listViewItem(2)})
+                j = j + 1
+                'listViewItem(k) = Nothing
+                k = k + 1
+                myImage = Nothing
+            End If
+            If k = 3 Then
+                ListView1.Items.AddRange(New ListViewItem() {listViewItem(0), listViewItem(1), listViewItem(2)})
+                listViewItem(0) = Nothing
+                listViewItem(1) = Nothing
+                listViewItem(2) = Nothing
+                k = 0
+            End If
+        Next
+        'pname = Nothing
+    End Sub
+    Private Sub ThumbnailView()
+        thread.Abort()
+        imageList.Images.Clear()
+        ListView1.Items.Clear()
+        thread = New System.Threading.Thread(AddressOf ImageList_Load)
+        thread.Start()
+
+    End Sub
+
 
     Private Sub CellSiteSoftMain_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         If (open_excel = True) Then
@@ -774,6 +578,31 @@ Public Class CellSiteSoftMain
         End If
     End Sub
 
+    Private Sub ListView1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListView1.SelectedIndexChanged
+        Dim i As Integer
+        Dim listViewItem1 As ListViewItem
+        Dim fname As String
+        'Dim files As String() = Directory.GetFiles(File1.Path)
+
+        fname = Nothing
+        For i = 0 To ListView1.Items.Count - 1
+            listViewItem1 = ListView1.Items.Item(i)
+            If listViewItem1.Selected Then
+                fname = listViewItem1.Text
+                i = ListView1.Items.Count + 1 'Exit the for loop, what happen to the keyword break?
+            End If
+        Next
+
+        If fname <> Nothing Then  'If the file was found
+            For i = 0 To AllFiles.Length - 1
+                If AllFiles(i).Contains(fname) Then
+                    image_full_path = Path.GetFullPath(AllFiles(i))
+                    i = AllFiles.Length + 1 ' To exit for loop
+                End If
+            Next
+        End If
+
+    End Sub
 End Class
 
 
