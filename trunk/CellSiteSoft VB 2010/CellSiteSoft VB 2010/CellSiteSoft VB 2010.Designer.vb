@@ -45,19 +45,17 @@ Partial Class CellSiteSoftMain
         '
         'DirectoryTreeView
         '
-        Me.DirectoryTreeView.Location = New System.Drawing.Point(33, 91)
-        Me.DirectoryTreeView.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DirectoryTreeView.Location = New System.Drawing.Point(25, 74)
         Me.DirectoryTreeView.Name = "DirectoryTreeView"
-        Me.DirectoryTreeView.Size = New System.Drawing.Size(279, 710)
+        Me.DirectoryTreeView.Size = New System.Drawing.Size(210, 578)
         Me.DirectoryTreeView.TabIndex = 0
         '
         'ComboBox_Drives
         '
         Me.ComboBox_Drives.FormattingEnabled = True
-        Me.ComboBox_Drives.Location = New System.Drawing.Point(33, 58)
-        Me.ComboBox_Drives.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ComboBox_Drives.Location = New System.Drawing.Point(25, 47)
         Me.ComboBox_Drives.Name = "ComboBox_Drives"
-        Me.ComboBox_Drives.Size = New System.Drawing.Size(279, 24)
+        Me.ComboBox_Drives.Size = New System.Drawing.Size(210, 21)
         Me.ComboBox_Drives.TabIndex = 1
         '
         'imageList
@@ -69,48 +67,42 @@ Partial Class CellSiteSoftMain
         'lstFileNames
         '
         Me.lstFileNames.FormattingEnabled = True
-        Me.lstFileNames.ItemHeight = 16
-        Me.lstFileNames.Location = New System.Drawing.Point(1132, 110)
-        Me.lstFileNames.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lstFileNames.Location = New System.Drawing.Point(849, 89)
         Me.lstFileNames.Name = "lstFileNames"
-        Me.lstFileNames.Size = New System.Drawing.Size(280, 692)
+        Me.lstFileNames.Size = New System.Drawing.Size(211, 563)
         Me.lstFileNames.TabIndex = 10
         '
         'cmdCategory
         '
         Me.cmdCategory.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCategory.FormattingEnabled = True
-        Me.cmdCategory.Location = New System.Drawing.Point(1132, 60)
-        Me.cmdCategory.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdCategory.Location = New System.Drawing.Point(849, 49)
         Me.cmdCategory.Name = "cmdCategory"
-        Me.cmdCategory.Size = New System.Drawing.Size(280, 32)
+        Me.cmdCategory.Size = New System.Drawing.Size(211, 28)
         Me.cmdCategory.TabIndex = 11
         Me.cmdCategory.Text = "Select Category"
         '
         'txtSiteName
         '
-        Me.txtSiteName.Location = New System.Drawing.Point(436, 17)
-        Me.txtSiteName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSiteName.Location = New System.Drawing.Point(327, 14)
         Me.txtSiteName.Name = "txtSiteName"
-        Me.txtSiteName.Size = New System.Drawing.Size(180, 22)
+        Me.txtSiteName.Size = New System.Drawing.Size(136, 20)
         Me.txtSiteName.TabIndex = 12
         '
         'txtSiteID
         '
-        Me.txtSiteID.Location = New System.Drawing.Point(855, 20)
-        Me.txtSiteID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSiteID.Location = New System.Drawing.Point(641, 16)
         Me.txtSiteID.Name = "txtSiteID"
-        Me.txtSiteID.Size = New System.Drawing.Size(199, 22)
+        Me.txtSiteID.Size = New System.Drawing.Size(150, 20)
         Me.txtSiteID.TabIndex = 13
         '
         'lblSiteName
         '
         Me.lblSiteName.AutoSize = True
         Me.lblSiteName.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSiteName.Location = New System.Drawing.Point(327, 17)
-        Me.lblSiteName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblSiteName.Location = New System.Drawing.Point(245, 14)
         Me.lblSiteName.Name = "lblSiteName"
-        Me.lblSiteName.Size = New System.Drawing.Size(93, 24)
+        Me.lblSiteName.Size = New System.Drawing.Size(76, 20)
         Me.lblSiteName.TabIndex = 15
         Me.lblSiteName.Text = "Site Name:"
         '
@@ -118,10 +110,9 @@ Partial Class CellSiteSoftMain
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(775, 17)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(581, 14)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 24)
+        Me.Label2.Size = New System.Drawing.Size(54, 20)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Site ID:"
         '
@@ -130,50 +121,44 @@ Partial Class CellSiteSoftMain
         Me.cmdFileSelect.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cmdFileSelect.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdFileSelect.ForeColor = System.Drawing.Color.Black
-        Me.cmdFileSelect.Location = New System.Drawing.Point(1435, 59)
-        Me.cmdFileSelect.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.cmdFileSelect.Location = New System.Drawing.Point(1076, 48)
         Me.cmdFileSelect.Name = "cmdFileSelect"
-        Me.cmdFileSelect.Size = New System.Drawing.Size(339, 31)
+        Me.cmdFileSelect.Size = New System.Drawing.Size(254, 25)
         Me.cmdFileSelect.TabIndex = 18
         Me.cmdFileSelect.Text = "SELECT check list file"
         Me.cmdFileSelect.UseVisualStyleBackColor = False
         '
         'CheckListFile
         '
-        Me.CheckListFile.Location = New System.Drawing.Point(1435, 89)
-        Me.CheckListFile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CheckListFile.Location = New System.Drawing.Point(1076, 72)
         Me.CheckListFile.Name = "CheckListFile"
-        Me.CheckListFile.Size = New System.Drawing.Size(337, 22)
+        Me.CheckListFile.Size = New System.Drawing.Size(254, 20)
         Me.CheckListFile.TabIndex = 19
         '
         'DestinationFolder
         '
         Me.DestinationFolder.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DestinationFolder.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DestinationFolder.Location = New System.Drawing.Point(1435, 121)
-        Me.DestinationFolder.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DestinationFolder.Location = New System.Drawing.Point(1076, 98)
         Me.DestinationFolder.Name = "DestinationFolder"
-        Me.DestinationFolder.Size = New System.Drawing.Size(339, 31)
+        Me.DestinationFolder.Size = New System.Drawing.Size(254, 25)
         Me.DestinationFolder.TabIndex = 20
         Me.DestinationFolder.Text = "SELECT destination folder"
         Me.DestinationFolder.UseVisualStyleBackColor = False
         '
         'txtDestinationFolder
         '
-        Me.txtDestinationFolder.Location = New System.Drawing.Point(1435, 159)
-        Me.txtDestinationFolder.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtDestinationFolder.Location = New System.Drawing.Point(1076, 129)
         Me.txtDestinationFolder.Name = "txtDestinationFolder"
-        Me.txtDestinationFolder.Size = New System.Drawing.Size(337, 22)
+        Me.txtDestinationFolder.Size = New System.Drawing.Size(254, 20)
         Me.txtDestinationFolder.TabIndex = 21
         '
         'lstFilesList2
         '
         Me.lstFilesList2.FormattingEnabled = True
-        Me.lstFilesList2.ItemHeight = 16
-        Me.lstFilesList2.Location = New System.Drawing.Point(1435, 191)
-        Me.lstFilesList2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.lstFilesList2.Location = New System.Drawing.Point(1076, 155)
         Me.lstFilesList2.Name = "lstFilesList2"
-        Me.lstFilesList2.Size = New System.Drawing.Size(337, 612)
+        Me.lstFilesList2.Size = New System.Drawing.Size(254, 498)
         Me.lstFilesList2.TabIndex = 22
         '
         'OpenFileDialog1
@@ -184,27 +169,27 @@ Partial Class CellSiteSoftMain
         '
         Me.COPY.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.COPY.Font = New System.Drawing.Font("Arial Narrow", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.COPY.Location = New System.Drawing.Point(1132, 17)
-        Me.COPY.Margin = New System.Windows.Forms.Padding(4)
+        Me.COPY.Location = New System.Drawing.Point(849, 14)
         Me.COPY.Name = "COPY"
-        Me.COPY.Size = New System.Drawing.Size(281, 39)
+        Me.COPY.Size = New System.Drawing.Size(211, 32)
         Me.COPY.TabIndex = 23
         Me.COPY.Text = "COPY"
         Me.COPY.UseVisualStyleBackColor = False
         '
         'ListView1
         '
-        Me.ListView1.Location = New System.Drawing.Point(319, 91)
+        Me.ListView1.Location = New System.Drawing.Point(239, 74)
+        Me.ListView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(806, 710)
+        Me.ListView1.Size = New System.Drawing.Size(606, 578)
         Me.ListView1.TabIndex = 24
         Me.ListView1.UseCompatibleStateImageBehavior = False
         '
         'CellSiteSoftMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1821, 833)
+        Me.ClientSize = New System.Drawing.Size(963, 677)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.COPY)
         Me.Controls.Add(Me.lstFilesList2)
@@ -220,9 +205,8 @@ Partial Class CellSiteSoftMain
         Me.Controls.Add(Me.lstFileNames)
         Me.Controls.Add(Me.ComboBox_Drives)
         Me.Controls.Add(Me.DirectoryTreeView)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "CellSiteSoftMain"
-        Me.Text = "TRB CellSiteSoft V.0.1"
+        Me.Text = "TRB Software - Field Photo Management v0.1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
