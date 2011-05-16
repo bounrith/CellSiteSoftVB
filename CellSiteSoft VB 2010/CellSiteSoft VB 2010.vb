@@ -30,6 +30,7 @@ Public Class CellSiteSoftMain
         Control.CheckForIllegalCrossThreadCalls = False
         image_full_path = Nothing
         CheckListFile.Text = Nothing
+        txtDestinationFolder.Text = Nothing
         'SetEnabled()
     End Sub
 
@@ -74,9 +75,9 @@ Public Class CellSiteSoftMain
     End Sub
 
     Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Drives.SelectedIndexChanged
-        MsgBox("Selected Drive: " & ComboBox_Drives.SelectedItem.ToString)
+        'MsgBox("Selected Drive: " & ComboBox_Drives.SelectedItem.ToString)
         'Threading.Thread.Sleep(5000) ' Wait for 5 seconds to browse the drive
-        LoadFolderTree(ComboBox_Drives.SelectedText)
+        LoadFolderTree(ComboBox_Drives.SelectedItem)
     End Sub
 
     'Changed from Public to Private
@@ -204,6 +205,7 @@ Public Class CellSiteSoftMain
             Next
         Catch ex As Exception
             MsgBox("Can not select this folder")
+            txtDestinationFolder.Text = Nothing
         End Try
     End Sub
     Private Sub lstFilesList2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstFilesList2.SelectedIndexChanged
@@ -225,7 +227,7 @@ Public Class CellSiteSoftMain
         Dim column1_data As String
         Dim column4_data As String
 
-        If image_full_path = Nothing Then
+        If image_full_path = Nothing Or lstFileNames.SelectedItem = Nothing Or txtDestinationFolder.Text = Nothing Then
             Return
         End If
         new_name_no_white_space = Replace(lstFileNames.SelectedItem.ToString, "/", "_Or_") ' Replace "/" with "_Or_"
