@@ -28,6 +28,8 @@ Public Class CellSiteSoftMain
         FolderBrowserDialog1.SelectedPath = System.IO.Directory.GetCurrentDirectory()
         thread = New System.Threading.Thread(AddressOf ImageList_Load)
         Control.CheckForIllegalCrossThreadCalls = False
+        image_full_path = Nothing
+        CheckListFile.Text = Nothing
         'SetEnabled()
     End Sub
 
@@ -223,15 +225,17 @@ Public Class CellSiteSoftMain
         Dim column1_data As String
         Dim column4_data As String
 
+        If image_full_path = Nothing Then
+            Return
+        End If
         new_name_no_white_space = Replace(lstFileNames.SelectedItem.ToString, "/", "_Or_") ' Replace "/" with "_Or_"
         new_name_no_white_space = Replace(new_name_no_white_space, "\", "_Or_") ' Replace "\" with "_Or_"
         new_name_no_white_space = Replace(new_name_no_white_space, " ", "") ' Replace SPACE with nothing, delete space
 
         destionation_path_and_file = txtDestinationFolder.Text & "\" & new_name_no_white_space & ".jpg"
 
-        check_list_file_name = CheckListFile.Text
         FileCopy(image_full_path, destionation_path_and_file)
-
+        check_list_file_name = CheckListFile.Text
         refresh_files = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
 
         lstFilesList2.Items.Clear()
@@ -241,6 +245,10 @@ Public Class CellSiteSoftMain
             strip_path_index = UBound(split_refresh)
             lstFilesList2.Items.Add(split_refresh(strip_path_index)) 'Omit the path and Add file name only
         Next
+
+        If check_list_file_name = Nothing Then
+            Return
+        End If
 
         If (open_excel = False) Then
             Excel_App = New Excel.Application
@@ -559,6 +567,12 @@ Public Class CellSiteSoftMain
                 k = 0
             End If
         Next
+        If k > 0 Then ' Check for the last one or two images.
+            For i = 0 To k - 1
+                ListView1.Items.AddRange(New ListViewItem() {listViewItem(i)})
+                listViewItem(i) = Nothing
+            Next
+        End If
         'pname = Nothing
     End Sub
     Private Sub ThumbnailView()
