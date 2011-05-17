@@ -539,7 +539,7 @@ Public Class CellSiteSoftMain
         'Set the ColorDepth and ImageSize properties of imageList1.
         imageList.TransparentColor = Color.Blue
         imageList.ColorDepth = ColorDepth.Depth32Bit
-        imageList.ImageSize = New Size(200, 170)
+        imageList.ImageSize = New Size(190, 150)
 
         j = 0
         k = 0
