@@ -19,8 +19,8 @@ Public Class CellSiteSoftMain
     Dim Excel_App As Excel.Application
     Dim Excel_Workbook As Excel.Workbook
     Dim Excel_Worksheet As Excel.Worksheet
+    Dim template_file_selected As Boolean
 
-    
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ComboBox_Drives.Text = "Select a Drive"
         Load_Drives()
@@ -28,12 +28,30 @@ Public Class CellSiteSoftMain
         FolderBrowserDialog1.SelectedPath = System.IO.Directory.GetCurrentDirectory()
         thread = New System.Threading.Thread(AddressOf ImageList_Load)
         Control.CheckForIllegalCrossThreadCalls = False
+
+        '------**To Determin the File Dialog is nothing or has value**----------
+        template_file_selected = False
+        OpenFileDialog1.FileName = Nothing
+        '------**----------------------------------------------------**---------
+
         image_full_path = Nothing
         CheckListFile.Text = Nothing
         txtDestinationFolder.Text = Nothing
         'SetEnabled()
     End Sub
 
+    Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Drives.SelectedIndexChanged
+        Dim split_drive_letter As String()
+        Dim extract_drive_letter As String
+        Dim last_split As Integer
+        'MsgBox("Selected Drive: " & ComboBox_Drives.SelectedItem.ToString)
+        'Threading.Thread.Sleep(5000) ' Wait for 5 seconds to browse the drive
+        split_drive_letter = Split(ComboBox_Drives.SelectedItem, Chr(32)) ' Split string with SPACE delimeter
+        last_split = UBound(split_drive_letter)
+        extract_drive_letter = split_drive_letter(last_split)
+        'LoadFolderTree(ComboBox_Drives.SelectedItem)
+        LoadFolderTree(extract_drive_letter)
+    End Sub
 
     'Friend WithEvents DirectoryTreeView As System.Windows.Forms.TreeView
     Public Sub LoadFolderTree(ByVal path As String)
@@ -74,22 +92,18 @@ Public Class CellSiteSoftMain
         Next
     End Sub
 
-    Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Drives.SelectedIndexChanged
-        'MsgBox("Selected Drive: " & ComboBox_Drives.SelectedItem.ToString)
-        'Threading.Thread.Sleep(5000) ' Wait for 5 seconds to browse the drive
-        LoadFolderTree(ComboBox_Drives.SelectedItem)
-    End Sub
-
     'Changed from Public to Private
     Private Sub Load_Drives()
         Dim AllDrives() As DriveInfo = DriveInfo.GetDrives()
         Dim d As DriveInfo
+        Dim drive_letter_and_type As String
         Dim drive_number As Integer = 0
         For Each d In AllDrives
             If My.Computer.FileSystem.Drives(drive_number).IsReady = True Then
-                ComboBox_Drives.Items.Add(d.Name)
+                drive_letter_and_type = d.DriveType.ToString & Chr(32) & d.Name
+                'ComboBox_Drives.Items.Add(d.Name)
+                ComboBox_Drives.Items.Add(drive_letter_and_type)
             End If
-
             drive_number = drive_number + 1
         Next
     End Sub
@@ -181,12 +195,17 @@ Public Class CellSiteSoftMain
     Private Sub cmdFileSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFileSelect.Click
         Try
             OpenFileDialog1.ShowDialog()
+            If (OpenFileDialog1.FileName = Nothing And template_file_selected = False) Then
+                MsgBox("Please select a Check List Template ")
+                Return
+            End If
             CheckListFile.Text = OpenFileDialog1.FileName
+            template_file_selected = True
         Catch ex As Exception
             MsgBox("Can't locate file")
         End Try
-        MsgBox("Check List File = " & CheckListFile.Text)
-        MsgBox("Check List File To String = " & CheckListFile.Text.ToString)
+        'MsgBox("Check List File = " & CheckListFile.Text)
+        'MsgBox("Check List File To String = " & CheckListFile.Text.ToString)
     End Sub
     Private Sub DestinationFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DestinationFolder.Click
         Dim AllFiles2 As String()
@@ -260,10 +279,10 @@ Public Class CellSiteSoftMain
         End If
 
         Excel_Worksheet.Cells(3, 2) = "SITE NAME:" & Chr(32) & txtSiteName.Text
-        Excel_Worksheet.Cells(4, 2) = "SITE NAME:" & Chr(32) & txtSiteID.Text
+        Excel_Worksheet.Cells(4, 2) = "SITE ID:" & Chr(32) & txtSiteID.Text
 
         total_row = Excel_Worksheet.UsedRange.Rows.Count
-        MsgBox("Total Row = " & total_row)
+        'MsgBox("Total Row = " & total_row)
 
         ReDim data_from_excel(0 To total_row + 1, 0 To 2) ' Will not use the array (0,0) to match the Excel index that starts at (1,1)
 
@@ -294,9 +313,9 @@ Public Class CellSiteSoftMain
             'MsgBox("New Name no white space = " & new_name_no_white_space)
 
             If (new_name_no_white_space = array_no_white_space) Then
-                MsgBox("Updating Excel file: Row Number ===> " & search_row)
                 Excel_Worksheet.Cells(search_row, 4) = "X"
                 Excel_Workbook.Save()
+                MsgBox("Excel file has been updated: " & vbLf & vbLf & " Row Number ==> " & search_row)
                 Exit For
             End If
         Next search_row
