@@ -212,7 +212,6 @@ Partial Class CellSiteSoftMain
         Me.GroupBox1.Size = New System.Drawing.Size(242, 592)
         Me.GroupBox1.TabIndex = 26
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Category"
         '
         'GroupBox2
         '
@@ -224,7 +223,6 @@ Partial Class CellSiteSoftMain
         Me.GroupBox2.Size = New System.Drawing.Size(633, 592)
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Source"
         '
         'GroupBox3
         '
@@ -237,7 +235,6 @@ Partial Class CellSiteSoftMain
         Me.GroupBox3.Size = New System.Drawing.Size(276, 592)
         Me.GroupBox3.TabIndex = 28
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Destination"
         '
         'Label3
         '
@@ -253,7 +250,7 @@ Partial Class CellSiteSoftMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1182, 709)
+        Me.ClientSize = New System.Drawing.Size(1182, 735)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
