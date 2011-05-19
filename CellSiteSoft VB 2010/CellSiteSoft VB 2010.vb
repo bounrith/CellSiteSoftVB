@@ -98,9 +98,15 @@ Public Class CellSiteSoftMain
         Dim d As DriveInfo
         Dim drive_letter_and_type As String
         Dim drive_number As Integer = 0
+        Dim volumelabel As String
         For Each d In AllDrives
             If My.Computer.FileSystem.Drives(drive_number).IsReady = True Then
-                drive_letter_and_type = d.DriveType.ToString & Chr(32) & d.Name
+                volumelabel = d.VolumeLabel
+                If volumelabel = Nothing Then
+                    volumelabel = d.DriveType.ToString()
+                End If
+
+                drive_letter_and_type = volumelabel & Chr(32) & d.Name
                 'ComboBox_Drives.Items.Add(d.Name)
                 ComboBox_Drives.Items.Add(drive_letter_and_type)
             End If
@@ -639,6 +645,13 @@ Public Class CellSiteSoftMain
         End If
 
     End Sub
+
+    Private Sub ListView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.DoubleClick
+        Dim exec_string As String
+        exec_string = "c:\windows\system32\mspaint " & image_full_path
+        Shell(exec_string)
+    End Sub
+
 End Class
 
 
