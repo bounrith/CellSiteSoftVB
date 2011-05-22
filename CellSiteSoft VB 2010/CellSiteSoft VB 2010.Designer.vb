@@ -46,6 +46,7 @@ Partial Class CellSiteSoftMain
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -92,23 +93,23 @@ Partial Class CellSiteSoftMain
         '
         'txtSiteName
         '
-        Me.txtSiteName.Location = New System.Drawing.Point(226, 71)
+        Me.txtSiteName.Location = New System.Drawing.Point(254, 71)
         Me.txtSiteName.Name = "txtSiteName"
-        Me.txtSiteName.Size = New System.Drawing.Size(136, 20)
+        Me.txtSiteName.Size = New System.Drawing.Size(164, 20)
         Me.txtSiteName.TabIndex = 12
         '
         'txtSiteID
         '
-        Me.txtSiteID.Location = New System.Drawing.Point(437, 73)
+        Me.txtSiteID.Location = New System.Drawing.Point(497, 73)
         Me.txtSiteID.Name = "txtSiteID"
-        Me.txtSiteID.Size = New System.Drawing.Size(150, 20)
+        Me.txtSiteID.Size = New System.Drawing.Size(118, 20)
         Me.txtSiteID.TabIndex = 13
         '
         'lblSiteName
         '
         Me.lblSiteName.AutoSize = True
         Me.lblSiteName.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSiteName.Location = New System.Drawing.Point(144, 71)
+        Me.lblSiteName.Location = New System.Drawing.Point(172, 71)
         Me.lblSiteName.Name = "lblSiteName"
         Me.lblSiteName.Size = New System.Drawing.Size(76, 20)
         Me.lblSiteName.TabIndex = 15
@@ -118,7 +119,7 @@ Partial Class CellSiteSoftMain
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(377, 71)
+        Me.Label2.Location = New System.Drawing.Point(437, 71)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(54, 20)
         Me.Label2.TabIndex = 16
@@ -129,7 +130,7 @@ Partial Class CellSiteSoftMain
         Me.cmdFileSelect.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cmdFileSelect.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdFileSelect.ForeColor = System.Drawing.Color.Black
-        Me.cmdFileSelect.Location = New System.Drawing.Point(918, 66)
+        Me.cmdFileSelect.Location = New System.Drawing.Point(934, 68)
         Me.cmdFileSelect.Name = "cmdFileSelect"
         Me.cmdFileSelect.Size = New System.Drawing.Size(76, 25)
         Me.cmdFileSelect.TabIndex = 18
@@ -138,7 +139,7 @@ Partial Class CellSiteSoftMain
         '
         'CheckListFile
         '
-        Me.CheckListFile.Location = New System.Drawing.Point(753, 71)
+        Me.CheckListFile.Location = New System.Drawing.Point(769, 71)
         Me.CheckListFile.Name = "CheckListFile"
         Me.CheckListFile.Size = New System.Drawing.Size(163, 20)
         Me.CheckListFile.TabIndex = 19
@@ -151,7 +152,7 @@ Partial Class CellSiteSoftMain
         Me.DestinationFolder.Name = "DestinationFolder"
         Me.DestinationFolder.Size = New System.Drawing.Size(254, 25)
         Me.DestinationFolder.TabIndex = 20
-        Me.DestinationFolder.Text = "SAVE TO..."
+        Me.DestinationFolder.Text = "SELECT DESTINATION..."
         Me.DestinationFolder.UseVisualStyleBackColor = False
         '
         'txtDestinationFolder
@@ -197,7 +198,7 @@ Partial Class CellSiteSoftMain
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(616, 71)
+        Me.Label1.Location = New System.Drawing.Point(632, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(131, 20)
         Me.Label1.TabIndex = 25
@@ -240,17 +241,27 @@ Partial Class CellSiteSoftMain
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(442, 4)
+        Me.Label3.Location = New System.Drawing.Point(439, 4)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(305, 29)
         Me.Label3.TabIndex = 29
         Me.Label3.Text = "Field Photo Management"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(489, 713)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(205, 13)
+        Me.Label4.TabIndex = 30
+        Me.Label4.Text = "© 2011 TRB Software. All rights reserved."
         '
         'CellSiteSoftMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1182, 735)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -296,5 +307,6 @@ Partial Class CellSiteSoftMain
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 
 End Class
