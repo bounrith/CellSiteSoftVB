@@ -338,7 +338,7 @@ Public Class CellSiteSoftMain
             If (new_name_no_white_space = array_no_white_space) Then
                 Excel_Worksheet.Cells(search_row, 4) = "X"
                 Excel_Workbook.Save()
-                MsgBox("Excel file has been updated: " & vbLf & vbLf & " Row Number ==> " & search_row)
+                MsgBox("Excel file has been updated: " & vbLf & vbLf & " Row Number ---> " & search_row)
                 Exit For
             End If
         Next search_row
