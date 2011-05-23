@@ -41,7 +41,6 @@ Partial Class CellSiteSoftMain
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.COPY = New System.Windows.Forms.Button()
         Me.ListView1 = New System.Windows.Forms.ListView()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -93,14 +92,14 @@ Partial Class CellSiteSoftMain
         '
         'txtSiteName
         '
-        Me.txtSiteName.Location = New System.Drawing.Point(254, 71)
+        Me.txtSiteName.Location = New System.Drawing.Point(234, 62)
         Me.txtSiteName.Name = "txtSiteName"
         Me.txtSiteName.Size = New System.Drawing.Size(164, 20)
         Me.txtSiteName.TabIndex = 12
         '
         'txtSiteID
         '
-        Me.txtSiteID.Location = New System.Drawing.Point(497, 73)
+        Me.txtSiteID.Location = New System.Drawing.Point(503, 62)
         Me.txtSiteID.Name = "txtSiteID"
         Me.txtSiteID.Size = New System.Drawing.Size(118, 20)
         Me.txtSiteID.TabIndex = 13
@@ -109,7 +108,7 @@ Partial Class CellSiteSoftMain
         '
         Me.lblSiteName.AutoSize = True
         Me.lblSiteName.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSiteName.Location = New System.Drawing.Point(172, 71)
+        Me.lblSiteName.Location = New System.Drawing.Point(152, 62)
         Me.lblSiteName.Name = "lblSiteName"
         Me.lblSiteName.Size = New System.Drawing.Size(76, 20)
         Me.lblSiteName.TabIndex = 15
@@ -119,7 +118,7 @@ Partial Class CellSiteSoftMain
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(437, 71)
+        Me.Label2.Location = New System.Drawing.Point(443, 62)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(54, 20)
         Me.Label2.TabIndex = 16
@@ -130,18 +129,18 @@ Partial Class CellSiteSoftMain
         Me.cmdFileSelect.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cmdFileSelect.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdFileSelect.ForeColor = System.Drawing.Color.Black
-        Me.cmdFileSelect.Location = New System.Drawing.Point(934, 68)
+        Me.cmdFileSelect.Location = New System.Drawing.Point(667, 58)
         Me.cmdFileSelect.Name = "cmdFileSelect"
-        Me.cmdFileSelect.Size = New System.Drawing.Size(76, 25)
+        Me.cmdFileSelect.Size = New System.Drawing.Size(185, 25)
         Me.cmdFileSelect.TabIndex = 18
-        Me.cmdFileSelect.Text = "SELECT..."
+        Me.cmdFileSelect.Text = "Select Check List File ..."
         Me.cmdFileSelect.UseVisualStyleBackColor = False
         '
         'CheckListFile
         '
-        Me.CheckListFile.Location = New System.Drawing.Point(769, 71)
+        Me.CheckListFile.Location = New System.Drawing.Point(858, 62)
         Me.CheckListFile.Name = "CheckListFile"
-        Me.CheckListFile.Size = New System.Drawing.Size(163, 20)
+        Me.CheckListFile.Size = New System.Drawing.Size(284, 20)
         Me.CheckListFile.TabIndex = 19
         '
         'DestinationFolder
@@ -152,7 +151,7 @@ Partial Class CellSiteSoftMain
         Me.DestinationFolder.Name = "DestinationFolder"
         Me.DestinationFolder.Size = New System.Drawing.Size(254, 25)
         Me.DestinationFolder.TabIndex = 20
-        Me.DestinationFolder.Text = "SELECT DESTINATION..."
+        Me.DestinationFolder.Text = "Select COPY To Folder ..."
         Me.DestinationFolder.UseVisualStyleBackColor = False
         '
         'txtDestinationFolder
@@ -193,16 +192,6 @@ Partial Class CellSiteSoftMain
         Me.ListView1.Size = New System.Drawing.Size(389, 544)
         Me.ListView1.TabIndex = 24
         Me.ListView1.UseCompatibleStateImageBehavior = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(632, 71)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(131, 20)
-        Me.Label1.TabIndex = 25
-        Me.Label1.Text = "Checklist Template:"
         '
         'GroupBox1
         '
@@ -260,13 +249,13 @@ Partial Class CellSiteSoftMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
         Me.ClientSize = New System.Drawing.Size(1182, 735)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CheckListFile)
         Me.Controls.Add(Me.cmdFileSelect)
         Me.Controls.Add(Me.Label2)
@@ -302,7 +291,6 @@ Partial Class CellSiteSoftMain
     Public WithEvents imageList As System.Windows.Forms.ImageList
     Friend WithEvents COPY As System.Windows.Forms.Button
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox

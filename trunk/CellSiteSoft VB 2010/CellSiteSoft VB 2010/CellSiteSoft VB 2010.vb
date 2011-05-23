@@ -29,10 +29,10 @@ Public Class CellSiteSoftMain
         thread = New System.Threading.Thread(AddressOf ImageList_Load)
         Control.CheckForIllegalCrossThreadCalls = False
 
-        '------**To Determin the File Dialog is nothing or has value**----------
+        '---**To Determin the File Dialog is nothing or has value**--------
         template_file_selected = False
         OpenFileDialog1.FileName = Nothing
-        '------**----------------------------------------------------**---------
+        '---**---------------------------------------------------**---------
 
         image_full_path = Nothing
         CheckListFile.Text = Nothing
@@ -199,19 +199,32 @@ Public Class CellSiteSoftMain
 
 
     Private Sub cmdFileSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFileSelect.Click
+        Dim split_file_name As String()
+        Dim index_upper_bound As Integer
+        Dim left_3_string As String
         Try
             OpenFileDialog1.ShowDialog()
             If (OpenFileDialog1.FileName = Nothing And template_file_selected = False) Then
-                MsgBox("Please select a Check List Template ")
+                MsgBox("Please select a Check List file ")
                 Return
             End If
-            CheckListFile.Text = OpenFileDialog1.FileName
-            template_file_selected = True
+
+            split_file_name = Split(OpenFileDialog1.FileName, ".")
+            index_upper_bound = UBound(split_file_name)
+            left_3_string = Microsoft.VisualBasic.Left(split_file_name(index_upper_bound), 3)
+
+            If (left_3_string = "xls" Or left_3_string = "XLS") Then
+                CheckListFile.Text = OpenFileDialog1.FileName
+                template_file_selected = True
+            Else
+                MsgBox("Please select an EXCEL file")
+                Return
+            End If
+
         Catch ex As Exception
             MsgBox("Can't locate file")
         End Try
-        'MsgBox("Check List File = " & CheckListFile.Text)
-        'MsgBox("Check List File To String = " & CheckListFile.Text.ToString)
+
     End Sub
     Private Sub DestinationFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DestinationFolder.Click
         Dim AllFiles2 As String()
@@ -310,11 +323,15 @@ Public Class CellSiteSoftMain
         Next row_index
 
         new_name_no_white_space = Regex.Replace(new_name_no_white_space, txtSiteID.Text, "SiteID")
+        new_name_no_white_space = Replace(new_name_no_white_space, "_", "") ' Delete underscore
+        new_name_no_white_space = Replace(new_name_no_white_space, "-", "") ' Delete dash
 
         For search_row = 1 To total_row
             array_no_white_space = Replace(data_from_excel(search_row, 2), "/", "_Or_")
             array_no_white_space = Replace(array_no_white_space, "\", "_Or_")
             array_no_white_space = Replace(array_no_white_space, " ", "")
+            array_no_white_space = Replace(array_no_white_space, "_", "") ' Delete underscore
+            array_no_white_space = Replace(array_no_white_space, "-", "") ' Delete delete dash
             'MsgBox("Array no white space = " & array_no_white_space)
             'MsgBox("New Name no white space = " & new_name_no_white_space)
 
@@ -343,7 +360,7 @@ Public Class CellSiteSoftMain
         lstFileNames.Items.Add("002_" & txtSiteID.Text & "_Alpha_ant")
         lstFileNames.Items.Add("003_" & txtSiteID.Text & "_Alpha_LOS")
         lstFileNames.Items.Add("004_" & txtSiteID.Text & "_ Alpha_ant_front")
-        lstFileNames.Items.Add("05_" & txtSiteID.Text & "_Alpha_ant_w/connector")
+        lstFileNames.Items.Add("005_" & txtSiteID.Text & "_Alpha_ant_w/connector")
         lstFileNames.Items.Add("006_" & txtSiteID.Text & "_Alpha_ant Model/ Serial Number")
         lstFileNames.Items.Add("007_" & txtSiteID.Text & "_Alpha_RCU")
         lstFileNames.Items.Add("008_" & txtSiteID.Text & "_Alpha_RCU Model / Serial Number")
