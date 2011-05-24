@@ -665,7 +665,9 @@ Public Class CellSiteSoftMain
 
     Private Sub ListView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.DoubleClick
         Dim exec_string As String
-        exec_string = "c:\windows\system32\mspaint" & Chr(32) & Chr(34) & image_full_path & Chr(34)
+        Dim windir As String
+        windir = Environment.GetEnvironmentVariable("windir")
+        exec_string = windir & "\system32\mspaint" & Chr(32) & Chr(34) & image_full_path & Chr(34)
         Shell(exec_string, vbMaximizedFocus)
 
     End Sub
