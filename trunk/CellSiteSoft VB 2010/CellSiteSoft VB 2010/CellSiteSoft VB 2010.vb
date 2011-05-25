@@ -5,6 +5,7 @@ Imports System.Text.RegularExpressions ' For string replacement
 
 Public Class CellSiteSoftMain
     Dim AllFiles As String()
+    Dim AllFiles2 As String()
     Dim total_files As Integer = 0
     Dim image_loaded As Integer = 0
     Dim initial_load As Boolean = False
@@ -14,7 +15,8 @@ Public Class CellSiteSoftMain
     Dim box3_index As Integer = 0
     Dim file_browse_index As Integer = 0
     Dim image_full_path As String
-    Dim thread As System.Threading.Thread
+    Dim thread1 As System.Threading.Thread
+    Dim thread2 As System.Threading.Thread
     Dim open_excel As Boolean = False
     Dim Excel_App As Excel.Application
     Dim Excel_Workbook As Excel.Workbook
@@ -26,7 +28,8 @@ Public Class CellSiteSoftMain
         Load_Drives()
         Load_Category()
         FolderBrowserDialog1.SelectedPath = System.IO.Directory.GetCurrentDirectory()
-        thread = New System.Threading.Thread(AddressOf ImageList_Load)
+        thread1 = New System.Threading.Thread(AddressOf ImageList_Load1)
+        thread2 = New System.Threading.Thread(AddressOf ImageList_Load2)
         Control.CheckForIllegalCrossThreadCalls = False
 
         '---**To Determin the File Dialog is nothing or has value**--------
@@ -133,7 +136,7 @@ Public Class CellSiteSoftMain
 
         'FileListView.Clear()
         AllFiles = Directory.GetFiles(clean_path, "*.*", SearchOption.TopDirectoryOnly)
-        ThumbnailView()
+        ThumbnailView(1)
 
 
     End Sub
@@ -227,35 +230,32 @@ Public Class CellSiteSoftMain
 
     End Sub
     Private Sub DestinationFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DestinationFolder.Click
-        Dim AllFiles2 As String()
-        Dim split_file2 As String()
-        Dim no_path_index As Integer
+        'Dim split_file2 As String()
+        'Dim no_path_index As Integer
         Try
             FolderBrowserDialog1.ShowDialog()
             txtDestinationFolder.Text = FolderBrowserDialog1.SelectedPath.ToString
             AllFiles2 = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
-
-            lstFilesList2.Items.Clear()
-            For Each File In AllFiles2
-                split_file2 = Split(File.ToString, "\")
-                no_path_index = UBound(split_file2)
-                lstFilesList2.Items.Add(split_file2(no_path_index)) 'Ommit the path and Add file name only
-            Next
+            ThumbnailView(2)
+            'lstFilesList2.Items.Clear()
+            'For Each File In AllFiles2
+            'split_file2 = Split(File.ToString, "\")
+            'no_path_index = UBound(split_file2)
+            'lstFilesList2.Items.Add(split_file2(no_path_index)) 'Ommit the path and Add file name only
+            'Next
         Catch ex As Exception
             MsgBox("Can not select this folder")
             txtDestinationFolder.Text = Nothing
         End Try
     End Sub
-    Private Sub lstFilesList2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstFilesList2.SelectedIndexChanged
-
-    End Sub
+ 
     Private Sub COPY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COPY.Click
 
         Dim new_name_no_white_space As String
         Dim destionation_path_and_file As String
-        Dim refresh_files As String()
-        Dim split_refresh As String()
-        Dim strip_path_index As Integer
+        'Dim refresh_files As String()
+        'Dim split_refresh As String()
+        'Dim strip_path_index As Integer
         Dim total_row As Integer
         Dim data_from_excel As String(,) 'two dimensional array
         Dim check_list_file_name As String
@@ -276,15 +276,16 @@ Public Class CellSiteSoftMain
 
         FileCopy(image_full_path, destionation_path_and_file)
         check_list_file_name = CheckListFile.Text
-        refresh_files = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
+        'refresh_files = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
+        AllFiles2 = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
+        ThumbnailView(2)
+        'lstFilesList2.Items.Clear()
 
-        lstFilesList2.Items.Clear()
-
-        For Each refresh_file In refresh_files
-            split_refresh = Split(refresh_file.ToString, "\")
-            strip_path_index = UBound(split_refresh)
-            lstFilesList2.Items.Add(split_refresh(strip_path_index)) 'Omit the path and Add file name only
-        Next
+        'For Each refresh_file In refresh_files
+        'split_refresh = Split(refresh_file.ToString, "\")
+        'strip_path_index = UBound(split_refresh)
+        'lstFilesList2.Items.Add(split_refresh(strip_path_index)) 'Omit the path and Add file name only
+        'Next
 
         If check_list_file_name = Nothing Then
             Return
@@ -569,7 +570,7 @@ Public Class CellSiteSoftMain
         lstFileNames.Items.Add("139_" & txtSiteID.Text & "_Cabinet_Overview")
 
     End Sub
-    Private Sub ImageList_Load()
+    Private Sub ImageList_Load1()
         Dim i, j, k As Integer
         Dim pname As String
         Dim fname As String
@@ -577,11 +578,11 @@ Public Class CellSiteSoftMain
         'Dim files As String() = Directory.GetFiles(File1.Path)
         Dim myImage As Image
         Dim listViewItem(3) As ListViewItem
-        ListView1.LargeImageList = imageList
+        ListView1.LargeImageList = imageList1
         'Set the ColorDepth and ImageSize properties of imageList1.
-        imageList.TransparentColor = Color.Blue
-        imageList.ColorDepth = ColorDepth.Depth32Bit
-        imageList.ImageSize = New Size(190, 150)
+        imageList1.TransparentColor = Color.Blue
+        imageList1.ColorDepth = ColorDepth.Depth32Bit
+        imageList1.ImageSize = New Size(190, 150)
 
         j = 0
         k = 0
@@ -591,7 +592,7 @@ Public Class CellSiteSoftMain
                 pname = Path.GetFullPath(AllFiles(i))
                 fname = Path.GetFileName(AllFiles(i))
                 myImage = Image.FromFile(pname)
-                imageList.Images.Add(myImage)
+                imageList1.Images.Add(myImage)
                 myImage.Dispose()
                 'Dim listViewItem(k) As ListViewItem = New ListViewItem(fname, j)
                 'Add listViewItem1 and listViewItem2.
@@ -619,12 +620,71 @@ Public Class CellSiteSoftMain
         End If
         'pname = Nothing
     End Sub
-    Private Sub ThumbnailView()
-        thread.Abort()
-        imageList.Images.Clear()
-        ListView1.Items.Clear()
-        thread = New System.Threading.Thread(AddressOf ImageList_Load)
-        thread.Start()
+    Private Sub ImageList_Load2()
+        Dim i, j, k As Integer
+        Dim pname As String
+        Dim fname As String
+        'Dim fname As String
+        'Dim files As String() = Directory.GetFiles(File1.Path)
+        Dim myImage As Image
+        Dim listViewItem(3) As ListViewItem
+        ListView2.LargeImageList = imageList2
+        'Set the ColorDepth and ImageSize properties of imageList1.
+        imageList2.TransparentColor = Color.Blue
+        imageList2.ColorDepth = ColorDepth.Depth32Bit
+        ImageList2.ImageSize = New Size(100, 80)
+
+        j = 0
+        k = 0
+        'Add images to imageList1.
+        For i = 0 To AllFiles2.Length - 1
+            If AllFiles2(i).Contains(".jpg") Or AllFiles2(i).Contains(".JPG") Then
+                pname = Path.GetFullPath(AllFiles2(i))
+                fname = Path.GetFileName(AllFiles2(i))
+                myImage = Image.FromFile(pname)
+                ImageList2.Images.Add(myImage)
+                myImage.Dispose()
+                'Dim listViewItem(k) As ListViewItem = New ListViewItem(fname, j)
+                'Add listViewItem1 and listViewItem2.
+                Dim listViewItemTmp As ListViewItem = New ListViewItem(fname, j)
+                listViewItem(k) = listViewItemTmp
+                'ListView1.Items.AddRange(New ListViewItem() {listViewItem(0), listViewItem(1), listViewItem(2)})
+                j = j + 1
+                'listViewItem(k) = Nothing
+                k = k + 1
+                myImage = Nothing
+            End If
+            If k = 3 Then
+                ListView2.Items.AddRange(New ListViewItem() {listViewItem(0), listViewItem(1), listViewItem(2)})
+                listViewItem(0) = Nothing
+                listViewItem(1) = Nothing
+                listViewItem(2) = Nothing
+                k = 0
+            End If
+        Next
+        If k > 0 Then ' Check for the last one or two images.
+            For i = 0 To k - 1
+                ListView2.Items.AddRange(New ListViewItem() {listViewItem(i)})
+                listViewItem(i) = Nothing
+            Next
+        End If
+        'pname = Nothing
+    End Sub
+    Private Sub ThumbnailView(ByVal ListView As Integer)
+        If ListView = 1 Then
+            thread1.Abort()
+            imageList1.Images.Clear()
+            ListView1.Items.Clear()
+            thread1 = New System.Threading.Thread(AddressOf ImageList_Load1)
+            thread1.Start()
+        ElseIf ListView = 2 Then
+            thread2.Abort()
+            imageList2.Images.Clear()
+            ListView2.Items.Clear()
+            thread2 = New System.Threading.Thread(AddressOf ImageList_Load2)
+            thread2.Start()
+
+        End If
 
     End Sub
 
