@@ -202,9 +202,11 @@ Public Class CellSiteSoftMain
 
 
     Private Sub cmdFileSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFileSelect.Click
+        Dim AllProcesses As Process()
         Dim split_file_name As String()
         Dim index_upper_bound As Integer
         Dim left_3_string As String
+
         Try
             OpenFileDialog1.ShowDialog()
             If (OpenFileDialog1.FileName = Nothing And template_file_selected = False) Then
@@ -219,6 +221,22 @@ Public Class CellSiteSoftMain
             If (left_3_string = "xls" Or left_3_string = "XLS") Then
                 CheckListFile.Text = OpenFileDialog1.FileName
                 template_file_selected = True
+
+                '-------*** Change Checklist file, close EXCEL, Kill EXCEL Process ***-----------
+                If (open_excel = True) Then
+                    'MsgBox("Closing Excel File")
+                    Excel_Workbook.Close()
+                    Excel_App.Quit()
+                    Excel_App = Nothing
+                    AllProcesses = Process.GetProcesses
+                    For Each one_process In AllProcesses
+                        If one_process.ProcessName.Contains("EXCEL") Then
+                            one_process.Kill()
+                        End If
+                    Next
+                    open_excel = False
+                End If
+                '-------***---------------------------------------------------------***-----------
             Else
                 MsgBox("Please select an EXCEL file")
                 Return
