@@ -753,6 +753,12 @@ Public Class CellSiteSoftMain
     Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.Click
 
     End Sub
+
+    Private Sub Browse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Browse.Click
+        OpenFileDialog2.FileName = Nothing
+        OpenFileDialog2.InitialDirectory = txtDestinationFolder.Text
+        OpenFileDialog2.ShowDialog()
+    End Sub
 End Class
 
 
