@@ -47,6 +47,8 @@ Partial Class CellSiteSoftMain
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
+        Me.Browse = New System.Windows.Forms.Button()
+        Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -134,14 +136,14 @@ Partial Class CellSiteSoftMain
         Me.cmdFileSelect.Name = "cmdFileSelect"
         Me.cmdFileSelect.Size = New System.Drawing.Size(170, 25)
         Me.cmdFileSelect.TabIndex = 18
-        Me.cmdFileSelect.Text = "Select Check List File ..."
+        Me.cmdFileSelect.Text = "select Check List file ..."
         Me.cmdFileSelect.UseVisualStyleBackColor = False
         '
         'CheckListFile
         '
         Me.CheckListFile.Location = New System.Drawing.Point(777, 58)
         Me.CheckListFile.Name = "CheckListFile"
-        Me.CheckListFile.Size = New System.Drawing.Size(256, 20)
+        Me.CheckListFile.Size = New System.Drawing.Size(235, 20)
         Me.CheckListFile.TabIndex = 19
         '
         'DestinationFolder
@@ -152,7 +154,7 @@ Partial Class CellSiteSoftMain
         Me.DestinationFolder.Name = "DestinationFolder"
         Me.DestinationFolder.Size = New System.Drawing.Size(222, 25)
         Me.DestinationFolder.TabIndex = 20
-        Me.DestinationFolder.Text = "Select COPY To Folder ..."
+        Me.DestinationFolder.Text = "select COPY To folder ..."
         Me.DestinationFolder.UseVisualStyleBackColor = False
         '
         'txtDestinationFolder
@@ -180,7 +182,7 @@ Partial Class CellSiteSoftMain
         'ListView1
         '
         Me.ListView1.Location = New System.Drawing.Point(228, 26)
-        Me.ListView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ListView1.Margin = New System.Windows.Forms.Padding(2)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(311, 531)
         Me.ListView1.TabIndex = 24
@@ -222,7 +224,7 @@ Partial Class CellSiteSoftMain
         'ListView2
         '
         Me.ListView2.Location = New System.Drawing.Point(5, 98)
-        Me.ListView2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ListView2.Margin = New System.Windows.Forms.Padding(2)
         Me.ListView2.Name = "ListView2"
         Me.ListView2.Size = New System.Drawing.Size(232, 425)
         Me.ListView2.TabIndex = 31
@@ -253,6 +255,20 @@ Partial Class CellSiteSoftMain
         Me.ImageList2.ImageSize = New System.Drawing.Size(32, 32)
         Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
         '
+        'Browse
+        '
+        Me.Browse.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Browse.Location = New System.Drawing.Point(1029, 3)
+        Me.Browse.Name = "Browse"
+        Me.Browse.Size = New System.Drawing.Size(124, 29)
+        Me.Browse.TabIndex = 31
+        Me.Browse.Text = "Modify File/Folder"
+        Me.Browse.UseVisualStyleBackColor = True
+        '
+        'OpenFileDialog2
+        '
+        Me.OpenFileDialog2.FileName = "OpenFileDialog2"
+        '
         'CellSiteSoftMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -261,6 +277,7 @@ Partial Class CellSiteSoftMain
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
         Me.ClientSize = New System.Drawing.Size(1156, 705)
+        Me.Controls.Add(Me.Browse)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.GroupBox3)
@@ -307,5 +324,7 @@ Partial Class CellSiteSoftMain
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Public WithEvents ImageList2 As System.Windows.Forms.ImageList
     Friend WithEvents ListView2 As System.Windows.Forms.ListView
+    Friend WithEvents Browse As System.Windows.Forms.Button
+    Friend WithEvents OpenFileDialog2 As System.Windows.Forms.OpenFileDialog
 
 End Class
