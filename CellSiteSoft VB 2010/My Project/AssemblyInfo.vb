@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("WindowsApplication1")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Toyota Motor Sales, USA, Inc.")> 
-<Assembly: AssemblyProduct("WindowsApplication1")> 
-<Assembly: AssemblyCopyright("Copyright © Toyota Motor Sales, USA, Inc. 2011")> 
+<Assembly: AssemblyTitle("FPhotoM")> 
+<Assembly: AssemblyDescription("Field Photo Management")> 
+<Assembly: AssemblyCompany("TRB Software, Inc.")> 
+<Assembly: AssemblyProduct("Field Photo Management")> 
+<Assembly: AssemblyCopyright("Copyright © TRB Software, Inc. 2011")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>

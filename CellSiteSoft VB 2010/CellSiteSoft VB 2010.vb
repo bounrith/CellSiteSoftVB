@@ -750,7 +750,7 @@ Public Class CellSiteSoftMain
 
     End Sub
 
-    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.Click
+    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
@@ -758,6 +758,20 @@ Public Class CellSiteSoftMain
         OpenFileDialog2.FileName = Nothing
         OpenFileDialog2.InitialDirectory = txtDestinationFolder.Text
         OpenFileDialog2.ShowDialog()
+    End Sub
+
+    Private Sub RegisterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegisterToolStripMenuItem.Click
+        MessageBox.Show("Register me please.")
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim AboutBoxForm As New TRBAboutBox
+
+        AboutBoxForm.Show()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
     End Sub
 End Class
 
