@@ -8,8 +8,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{11364E1D-20BC-44D8-AC1D-D0A3F6E2DB0C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
-    <RootNamespace>WindowsApplication1</RootNamespace>
+    <StartupObject>FieldPhotoManagement.My.MyApplication</StartupObject>
+    <RootNamespace>FieldPhotoManagement</RootNamespace>
     <AssemblyName>CellSiteSoft VB 2010</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
@@ -96,6 +96,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TRBAboutBox.Designer.vb">
+      <DependentUpon>TRBAboutBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TRBAboutBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CellSiteSoft VB 2010.Designer.vb">
       <DependentUpon>CellSiteSoft VB 2010.vb</DependentUpon>
     </Compile>
@@ -119,6 +125,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="TRBAboutBox.resx">
+      <DependentUpon>TRBAboutBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CellSiteSoft VB 2010.resx">
       <DependentUpon>CellSiteSoft VB 2010.vb</DependentUpon>
     </EmbeddedResource>
