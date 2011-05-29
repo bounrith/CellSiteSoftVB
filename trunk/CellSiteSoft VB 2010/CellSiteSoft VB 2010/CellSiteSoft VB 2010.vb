@@ -3,7 +3,7 @@ Imports System.IO
 Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Text.RegularExpressions ' For string replacement
 
-Public Class CellSiteSoftMain
+Public Class frmFPhotoM
     Dim AllFiles As String()
     Dim AllFiles2 As String()
     Dim total_files As Integer = 0
@@ -266,7 +266,7 @@ Public Class CellSiteSoftMain
             txtDestinationFolder.Text = Nothing
         End Try
     End Sub
- 
+
     Private Sub COPY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COPY.Click
 
         Dim new_name_no_white_space As String
@@ -750,9 +750,6 @@ Public Class CellSiteSoftMain
 
     End Sub
 
-    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
 
     Private Sub Browse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Browse.Click
         OpenFileDialog2.FileName = Nothing
@@ -760,18 +757,21 @@ Public Class CellSiteSoftMain
         OpenFileDialog2.ShowDialog()
     End Sub
 
-    Private Sub RegisterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegisterToolStripMenuItem.Click
-        MessageBox.Show("Register me please.")
-    End Sub
-
-    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
-        Dim AboutBoxForm As New TRBAboutBox
-
+    Private Sub AboutToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem1.Click
+        Dim AboutBoxForm As New frmAboutBox
         AboutBoxForm.Show()
     End Sub
 
-    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+    Private Sub ExitToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem1.Click
         Me.Close()
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem2.Click
+        System.Diagnostics.Process.Start("http://www.trbsoft.com/support")
+    End Sub
+
+    Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
+
     End Sub
 End Class
 
