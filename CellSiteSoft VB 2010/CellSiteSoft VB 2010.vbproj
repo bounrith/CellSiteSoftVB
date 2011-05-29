@@ -96,10 +96,10 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.Designer.vb">
-      <DependentUpon>AboutBox.vb</DependentUpon>
+    <Compile Include="frmAboutBox.Designer.vb">
+      <DependentUpon>frmAboutBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="AboutBox.vb">
+    <Compile Include="frmAboutBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CellSiteSoft VB 2010.Designer.vb">
@@ -131,8 +131,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AboutBox.resx">
-      <DependentUpon>AboutBox.vb</DependentUpon>
+    <EmbeddedResource Include="frmAboutBox.resx">
+      <DependentUpon>frmAboutBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CellSiteSoft VB 2010.resx">
       <DependentUpon>CellSiteSoft VB 2010.vb</DependentUpon>
