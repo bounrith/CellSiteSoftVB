@@ -10,7 +10,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>FieldPhotoManagement.My.MyApplication</StartupObject>
     <RootNamespace>FieldPhotoManagement</RootNamespace>
-    <AssemblyName>CellSiteSoft VB 2010</AssemblyName>
+    <AssemblyName>FPhotoM</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -38,7 +38,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>CellSiteSoft VB 2010.xml</DocumentationFile>
+    <DocumentationFile>FPhotoM.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -48,7 +48,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>CellSiteSoft VB 2010.xml</DocumentationFile>
+    <DocumentationFile>FPhotoM.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -96,10 +96,10 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TRBAboutBox.Designer.vb">
-      <DependentUpon>TRBAboutBox.vb</DependentUpon>
+    <Compile Include="AboutBox.Designer.vb">
+      <DependentUpon>AboutBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="TRBAboutBox.vb">
+    <Compile Include="AboutBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CellSiteSoft VB 2010.Designer.vb">
@@ -125,8 +125,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="TRBAboutBox.resx">
-      <DependentUpon>TRBAboutBox.vb</DependentUpon>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CellSiteSoft VB 2010.resx">
       <DependentUpon>CellSiteSoft VB 2010.vb</DependentUpon>
