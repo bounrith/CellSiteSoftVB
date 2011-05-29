@@ -773,6 +773,11 @@ Public Class frmFPhotoM
     Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
+        Dim CustomerKeyForm As New frmCustomerKey
+        CustomerKeyForm.Show()
+    End Sub
 End Class
 
 
