@@ -24,13 +24,6 @@ Public Class frmFPhotoM
     Dim template_file_selected As Boolean
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        '--------START REGISTRATION CHECK to see how many times has the program ran / if less than 15 then EVERYTHING is OK
-        '--------if this run is >= 15 then must register or the program will terminate / call us at 10th run
-
-
-
-        '--------END REGISTRATION CHECK
-
         ComboBox_Drives.Text = "Select a Drive"
         Load_Drives()
         Load_Category()
