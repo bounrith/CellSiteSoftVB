@@ -184,7 +184,7 @@ Partial Class frmFPhotoM
         Me.cmdFileSelect.ForeColor = System.Drawing.Color.Black
         Me.cmdFileSelect.Location = New System.Drawing.Point(968, 131)
         Me.cmdFileSelect.Name = "cmdFileSelect"
-        Me.cmdFileSelect.Size = New System.Drawing.Size(60, 31)
+        Me.cmdFileSelect.Size = New System.Drawing.Size(60, 26)
         Me.cmdFileSelect.TabIndex = 18
         Me.cmdFileSelect.Text = "Find..."
         Me.cmdFileSelect.UseVisualStyleBackColor = False

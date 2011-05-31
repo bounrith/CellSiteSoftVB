@@ -28,6 +28,8 @@ Partial Class frmCustomerKey
         Me.Label1 = New System.Windows.Forms.Label()
         Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Button1
@@ -58,8 +60,8 @@ Partial Class frmCustomerKey
         Me.RichTextBox1.Size = New System.Drawing.Size(297, 128)
         Me.RichTextBox1.TabIndex = 2
         Me.RichTextBox1.Text = "Thank you so much for your purchase of a TRB Software product. Please e-mail or c" & _
-    "all our Sale Department to get the License Key. You will need to provide the inf" & _
-    "ormation below."
+            "all our Sale Department to get the License Key. You will need to provide the inf" & _
+            "ormation below."
         '
         'Label1
         '
@@ -81,7 +83,7 @@ Partial Class frmCustomerKey
         Me.RichTextBox2.Size = New System.Drawing.Size(297, 104)
         Me.RichTextBox2.TabIndex = 4
         Me.RichTextBox2.Text = "TRB Software, Inc." & Global.Microsoft.VisualBasic.ChrW(10) & "PO Box 91414" & Global.Microsoft.VisualBasic.ChrW(10) & "Long Beach, CA 90809" & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(10) & "562.858.0830" & Global.Microsoft.VisualBasic.ChrW(10) & "license@trbsof" & _
-    "t.com"
+            "t.com"
         '
         'Label2
         '
@@ -92,18 +94,38 @@ Partial Class frmCustomerKey
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "CUSTOMER KEY"
         '
-        'Form1
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(679, 315)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 6
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(679, 378)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(39, 13)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "Label3"
+        '
+        'frmCustomerKey
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(788, 540)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.RichTextBox2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
-        Me.Name = "Form1"
+        Me.Name = "frmCustomerKey"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TRB Software - Customer Key"
         Me.ResumeLayout(False)
@@ -116,5 +138,7 @@ Partial Class frmCustomerKey
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents RichTextBox2 As System.Windows.Forms.RichTextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 
 End Class
