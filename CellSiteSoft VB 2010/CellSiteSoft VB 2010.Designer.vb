@@ -40,6 +40,7 @@ Partial Class frmFPhotoM
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtImageSelected = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
@@ -77,7 +78,6 @@ Partial Class frmFPhotoM
         Me.COPY = New System.Windows.Forms.Button()
         Me.ListView2 = New System.Windows.Forms.ListView()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.txtImageSelected = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -242,6 +242,14 @@ Partial Class frmFPhotoM
         Me.GroupBox2.Size = New System.Drawing.Size(488, 569)
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
+        '
+        'txtImageSelected
+        '
+        Me.txtImageSelected.Location = New System.Drawing.Point(235, 19)
+        Me.txtImageSelected.Name = "txtImageSelected"
+        Me.txtImageSelected.Size = New System.Drawing.Size(235, 20)
+        Me.txtImageSelected.TabIndex = 25
+        Me.txtImageSelected.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label3
         '
@@ -476,7 +484,7 @@ Partial Class frmFPhotoM
         Me.DestinationFolder.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DestinationFolder.Location = New System.Drawing.Point(19, 17)
         Me.DestinationFolder.Name = "DestinationFolder"
-        Me.DestinationFolder.Size = New System.Drawing.Size(130, 28)
+        Me.DestinationFolder.Size = New System.Drawing.Size(229, 28)
         Me.DestinationFolder.TabIndex = 20
         Me.DestinationFolder.Text = "Copy To Folder..."
         Me.DestinationFolder.UseVisualStyleBackColor = False
@@ -486,17 +494,17 @@ Partial Class frmFPhotoM
         Me.txtDestinationFolder.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDestinationFolder.Location = New System.Drawing.Point(19, 52)
         Me.txtDestinationFolder.Name = "txtDestinationFolder"
-        Me.txtDestinationFolder.Size = New System.Drawing.Size(229, 22)
+        Me.txtDestinationFolder.Size = New System.Drawing.Size(184, 22)
         Me.txtDestinationFolder.TabIndex = 21
         '
         'Browse
         '
-        Me.Browse.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Browse.Location = New System.Drawing.Point(152, 17)
+        Me.Browse.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Browse.Location = New System.Drawing.Point(199, 52)
         Me.Browse.Name = "Browse"
-        Me.Browse.Size = New System.Drawing.Size(95, 28)
+        Me.Browse.Size = New System.Drawing.Size(49, 22)
         Me.Browse.TabIndex = 31
-        Me.Browse.Text = "Open Folder"
+        Me.Browse.Text = "Open"
         Me.Browse.UseVisualStyleBackColor = True
         '
         'COPY
@@ -535,14 +543,6 @@ Partial Class frmFPhotoM
         Me.GroupBox3.Size = New System.Drawing.Size(266, 569)
         Me.GroupBox3.TabIndex = 28
         Me.GroupBox3.TabStop = False
-        '
-        'txtImageSelected
-        '
-        Me.txtImageSelected.Location = New System.Drawing.Point(235, 19)
-        Me.txtImageSelected.Name = "txtImageSelected"
-        Me.txtImageSelected.Size = New System.Drawing.Size(235, 20)
-        Me.txtImageSelected.TabIndex = 25
-        Me.txtImageSelected.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'frmFPhotoM
         '
