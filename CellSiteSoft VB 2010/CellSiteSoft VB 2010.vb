@@ -412,7 +412,7 @@ Public Class frmFPhotoM
             If (new_name_no_white_space = array_no_white_space) Then
                 Excel_Worksheet.Cells(search_row, 4) = "X"
                 Excel_Workbook.Save()
-                MsgBox("Excel file has been updated: " & vbLf & vbLf & " Row Number ---> " & search_row)
+                MsgBox("Check List File has been updated: " & vbLf & vbLf & " Row Number ---> " & search_row)
                 Exit For
             End If
         Next search_row
@@ -781,6 +781,7 @@ Public Class frmFPhotoM
             listViewItem1 = ListView1.Items.Item(i)
             If listViewItem1.Selected Then
                 fname = listViewItem1.Text
+                txtImageSelected.Text = fname
                 i = ListView1.Items.Count + 1 'Exit the for loop, what happen to the keyword break?
             End If
         Next
