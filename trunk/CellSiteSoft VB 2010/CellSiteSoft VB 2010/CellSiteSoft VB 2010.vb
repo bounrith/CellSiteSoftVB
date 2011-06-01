@@ -1,7 +1,10 @@
 ﻿Imports System
 Imports System.IO
+Imports System.Xml
+Imports System.Text
 Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Text.RegularExpressions ' For string replacement
+Imports Microsoft.Win32
 
 Public Class frmFPhotoM
     Dim AllFiles As String()
@@ -24,6 +27,12 @@ Public Class frmFPhotoM
     Dim template_file_selected As Boolean
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        'demosoft()
+        'regcheck()
+
+
+
         ComboBox_Drives.Text = "Select a Drive"
         Load_Drives()
         Load_Category()
@@ -41,6 +50,52 @@ Public Class frmFPhotoM
         CheckListFile.Text = Nothing
         txtDestinationFolder.Text = Nothing
         'SetEnabled()
+    End Sub
+
+    Dim filenumber As Integer 'a variable delcare to get in the value of freefile function / automatically assigns the value which represents the file
+    Dim times_used As Integer = 1 'initializing times_used
+    Dim max_limit As Integer = 4 'set the maximum number of times
+
+    'http://vbdotnetforum.com/index.php?/topic/31-make-trial-version-of-software/
+    Private Sub demosoft()
+        filenumber = FreeFile() 'We assign the number which represents which file to open
+        If IO.File.Exists(Application.StartupPath & "Me.xml") Then 'Checking if file exists..
+            FileOpen(filenumber, Application.StartupPath & "Me.xml", OpenMode.Random, OpenAccess.ReadWrite) 'If exists,were opening it in readwrite mode.
+            FileGet(filenumber, times_used) 'Were reading from the file the value thats stored..ie the number of times he has used
+            ' MsgBox("You have executed this software " & (times_used) & " times") 'hmmm,were displaying it here..
+            FileClose(filenumber) 'Lets close the file now.
+            If times_used >= max_limit Then 'Were checking if the user has used the software more than the limit specified
+                MsgBox("Sorry,Your trial period is over!!Please purchase this software.") 'oops,if it has exceeded,then,he cant use it  
+                Application.Exit() 'Say Goodbye to the user..cos,he needs to purchase..We exit our app here.
+            End If
+            times_used = times_used + 1 'if he has used it once before,lets make it 2 now since this is the 2nd time
+            FileOpen(filenumber, Application.StartupPath & "Me.xml", OpenMode.Random, OpenAccess.ReadWrite) 'storing the value back here 
+            FilePut(filenumber, times_used)
+            FileClose(filenumber)
+        Else
+            'This part is if the user is using the software for the 1st time.The file has to be created
+            FileOpen(filenumber, Application.StartupPath & "Me.xml", OpenMode.Random, OpenAccess.ReadWrite)
+            FilePut(filenumber, times_used) 'ok,now he has opened and used once,so,lets write it in here.
+            FileClose(filenumber)
+        End If
+    End Sub
+
+
+    Private Sub regcheck()
+        Dim regKey As RegistryKey 'Declaring a new registry key here
+        regKey = Registry.LocalMachine.OpenSubKey("SOFTWARE", True) 'opening this subkey in the registry
+        regKey.CreateSubKey("FPhotoM") 'Were creating a new subkey called FPhotoM
+        regKey.SetValue("FPhotoM", times_used) 'We're setting how many times used in the registry
+        Try
+            times_used = regKey.GetValue("FPhotoM", 0) 'We're getting how many times used
+        Catch ex As Exception
+            MsgBox("Registry Error: Unable to register time_used.")
+        End Try
+        If times_used > max_limit Then 'Checking if times used is greater than maximum limit
+            MsgBox("Your trial period as expired!") 'If it is,well,we display a message box to the user saying its expired..
+            Application.Exit() 'And here,we exit the application again.
+        End If
+        regKey.Close() 'Our job is done,so we close the regkey here 
     End Sub
 
     Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Drives.SelectedIndexChanged
@@ -646,10 +701,10 @@ Public Class frmFPhotoM
         'Dim files As String() = Directory.GetFiles(File1.Path)
         Dim myImage As Image
         Dim listViewItem(3) As ListViewItem
-        ListView2.LargeImageList = imageList2
+        ListView2.LargeImageList = ImageList2
         'Set the ColorDepth and ImageSize properties of imageList1.
-        imageList2.TransparentColor = Color.Blue
-        imageList2.ColorDepth = ColorDepth.Depth32Bit
+        ImageList2.TransparentColor = Color.Blue
+        ImageList2.ColorDepth = ColorDepth.Depth32Bit
         ImageList2.ImageSize = New Size(100, 80)
 
         j = 0
@@ -697,7 +752,7 @@ Public Class frmFPhotoM
             thread1.Start()
         ElseIf ListView = 2 Then
             thread2.Abort()
-            imageList2.Images.Clear()
+            ImageList2.Images.Clear()
             ListView2.Items.Clear()
             thread2 = New System.Threading.Thread(AddressOf ImageList_Load2)
             thread2.Start()

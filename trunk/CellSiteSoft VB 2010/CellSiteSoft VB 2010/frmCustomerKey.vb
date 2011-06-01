@@ -5,6 +5,18 @@ Imports System.Net.NetworkInformation
 
 Public Class frmCustomerKey
 
+    Function DateToJDate(ByVal TheDate As Date) As String
+        Dim TheYear As Integer
+        Dim TheDays As Integer
+        Dim JDate As String
+
+        TheYear = Year(TheDate)
+        TheDays = DateDiff("d", DateSerial(TheYear, 1, 0), TheDate)
+        JDate = Format(TheYear, "0000") & Format(TheDays, "000")
+
+        Return JDate
+    End Function
+
     Function getMacAddress()
         ' this code is used to get the mac address of eth0 network card
         Dim nics() As NetworkInterface = _
@@ -12,25 +24,13 @@ Public Class frmCustomerKey
         Return nics(0).GetPhysicalAddress.ToString
     End Function
 
-    Public Sub CheckRegistration(ByVal xmlText As [String])
-        '--------START REGISTRATION CHECK to see how many times has the program ran / if less than 15 then EVERYTHING is OK
-        '--------if this run is >= 15 then must register or the program will terminate / call us at 10th run
-
-        'Dim _doc As New XmlDocument
-        'alternately, _doc.LoadXml(xmlText); to load from input
-
-        '_doc.LoadXml("\obj\x86\Debug\FPhotoM.xml")
-
-        'Dim _elasDate As XmlNodeList = _doc.GetElementsByTagName("elasDate")
-        'Dim _elasRun As XmlNodeList = _doc.GetElementsByTagName("elasRun")
-        'Dim elasDate As Date = _elasDate
-
-    End Sub ' END REGISTRATION CHECK
-
-
-
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim serialFile As StreamWriter
+        Dim JSDateFile As StreamWriter
+        JSDateFile = File.CreateText("jSDate.xml")
+        JSDateFile.WriteLine(DateToJDate(System.DateTime.Now()))
+        JSDateFile.Close()
+
         serialFile = File.CreateText("CustomerKey.txt")
 
         ' display mac address in 4s to user
@@ -58,37 +58,6 @@ Public Class frmCustomerKey
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Me.Close()
-    End Sub
-
-
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        WriteXML()
-    End Sub
-
-    Private Sub WriteXML()
-        Dim writer As New XmlTextWriter("akire.xml", System.Text.Encoding.UTF8)
-        writer.WriteStartDocument(True)
-        writer.Formatting = Formatting.Indented
-        writer.Indentation = 2
-        writer.WriteStartElement("Table")
-        createNode(System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, writer)
-        writer.WriteEndElement()
-        writer.WriteEndDocument()
-        writer.Close()
-    End Sub
-
-    Private Sub createNode(ByVal pID As String, ByVal pName As String, ByVal pPrice As String, ByVal writer As XmlTextWriter)
-        writer.WriteStartElement("TRB Software")
-        writer.WriteStartElement("StartDate")
-        writer.WriteString(pID)
-        writer.WriteEndElement()
-        writer.WriteStartElement("TodayDate")
-        writer.WriteString(pName)
-        writer.WriteEndElement()
-        writer.WriteStartElement("EndDate")
-        writer.WriteString(pPrice)
-        writer.WriteEndElement()
-        writer.WriteEndElement()
     End Sub
 
 End Class
