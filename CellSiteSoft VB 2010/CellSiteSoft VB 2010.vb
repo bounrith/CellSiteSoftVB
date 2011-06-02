@@ -152,7 +152,7 @@ Public Class frmFPhotoM
 
     Dim filenumber As Integer 'a variable delcare to get in the value of freefile function / automatically assigns the value which represents the file
     Dim times_used As Integer = 1 'initializing times_used
-    Dim max_limit As Integer = 15 'set the maximum number of times
+    Dim max_limit As Integer = 5 'set the maximum number of times
 
     'http://vbdotnetforum.com/index.php?/topic/31-make-trial-version-of-software/
     Private Sub demosoft()
