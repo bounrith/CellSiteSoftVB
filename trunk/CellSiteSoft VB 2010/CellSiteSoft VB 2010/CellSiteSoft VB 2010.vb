@@ -1,9 +1,10 @@
 ﻿Imports System
 Imports System.IO
+Imports System.Net.NetworkInformation
 Imports System.Xml
 Imports System.Text
 Imports Excel = Microsoft.Office.Interop.Excel
-Imports System.Text.RegularExpressions ' For string replacement
+Imports System.Text.RegularExpressions ' for string replacement
 Imports Microsoft.Win32
 
 Public Class frmFPhotoM
@@ -25,14 +26,30 @@ Public Class frmFPhotoM
     Dim Excel_Workbook As Excel.Workbook
     Dim Excel_Worksheet As Excel.Worksheet
     Dim template_file_selected As Boolean
+    Dim strSerialInput As String
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim strSaltedMD5LicenseKey As String
+        Dim LicenseKeyFile As StreamReader
 
-        'demosoft()
-        'regcheck()
+        strSaltedMD5LicenseKey = localLicenseKey(getMacAddress, DateToJDate(Now()))
 
+        'test if LIC file exist and if exteranlLIC = internalLIC
+        'if success on both counts then FULL VERSION (for a year)
+        'else the program will enter demo mode for 15 usages
+        Try
+            LicenseKeyFile = File.OpenText("LicenseKey.txt")
+            strSerialInput = LicenseKeyFile.ReadLine()
+            LicenseKeyFile.Close()
 
+        Catch ex As Exception
+            MessageBox.Show("Licensing Warning: Please register the software soon. Thank you before hand.")
+        End Try
 
+        ' test extLIC input against internal TRB Protection Algorithm
+        If strSerialInput = strSaltedMD5LicenseKey Then
+
+            ' FULL VERSION BEGIN
         ComboBox_Drives.Text = "Select a Drive"
         Load_Drives()
         Load_Category()
@@ -41,20 +58,101 @@ Public Class frmFPhotoM
         thread2 = New System.Threading.Thread(AddressOf ImageList_Load2)
         Control.CheckForIllegalCrossThreadCalls = False
 
-        '---**To Determin the File Dialog is nothing or has value**--------
+            '---**To Determin the File Dialog is nothing or has value**-------
         template_file_selected = False
         OpenFileDialog1.FileName = Nothing
-        '---**---------------------------------------------------**---------
+            '---**---------------------------------------------------**-------
 
         image_full_path = Nothing
         CheckListFile.Text = Nothing
         txtDestinationFolder.Text = Nothing
         'SetEnabled()
+            ' FULL VERSION END
+        Else
+            'enter usage count demo version
+            demosoft()
+            regcheck()
+        End If
     End Sub
+
+    Function getMacAddress()
+        Dim nics() As NetworkInterface = _
+            NetworkInterface.GetAllNetworkInterfaces
+        Return nics(0).GetPhysicalAddress.ToString
+    End Function
+
+    ' convert Gregorian Date to Julian Date
+    Public Shared Function DateToJDate(ByVal TheDate As Date) As String
+        Dim TheYear As Integer
+        Dim TheDays As Integer
+        Dim JDate As String
+
+        TheYear = Year(TheDate)
+        TheDays = DateDiff("d", DateSerial(TheYear, 1, 0), TheDate)
+        JDate = Format(TheYear, "0000") & Format(TheDays, "000")
+
+        Return JDate
+    End Function
+
+    ' http://www.nonhostile.com/howto-calculate-md5-hash-string-vb-net.asp
+    ' calculate the MD5 hash of a given string 
+    ' the string is first converted to a byte array
+    Public Function MD5CalcString(ByVal strData As String) As String
+
+        Dim objMD5 As New System.Security.Cryptography.MD5CryptoServiceProvider
+        Dim arrData() As Byte
+        Dim arrHash() As Byte
+
+        ' first convert the string to bytes (using UTF8 encoding for unicode characters)
+        arrData = System.Text.Encoding.UTF8.GetBytes(strData)
+
+        ' hash contents of this byte array
+        arrHash = objMD5.ComputeHash(arrData)
+
+        ' thanks objects
+        objMD5 = Nothing
+
+        ' return formatted hash
+        Return ByteArrayToString(arrHash)
+
+    End Function
+
+    ' utility function to convert a byte array into a hex string
+    Private Function ByteArrayToString(ByVal arrInput() As Byte) As String
+        Dim strOutput As New System.Text.StringBuilder(arrInput.Length)
+
+        For i As Integer = 0 To arrInput.Length - 1
+            strOutput.Append(arrInput(i).ToString("X2"))
+        Next
+        Return strOutput.ToString().ToLower
+    End Function
+
+    Function localLicenseKey(ByVal getMacAddress As String, ByVal DateToJDate As String) As String
+        Dim strSalt As String = "ERIKA"
+        Dim txtjSDate As String
+
+        ' this is so the internal LIC remain static for a duration
+        ' need to enhance against jSDate.xml file deletion/modification
+        ' possible register to Registry or get from TRB licensing web server
+        Dim jSDateFile As StreamReader
+        Try
+            jSDateFile = File.OpenText("jSDate.xml")
+            txtjSDate = jSDateFile.ReadLine()
+            jSDateFile.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Warning Error: jSDate cannot be opened.")
+        End Try
+
+        Dim strMD5LicenseKey As String = MD5CalcString(getMacAddress & txtjSDate) ' unobfuscate MD5 hash 
+        Dim strSaltedMD5LicenseKey = MD5CalcString(strSalt & strMD5LicenseKey) ' obfuscate MD5 hash w/ salt
+        Return strSaltedMD5LicenseKey
+    End Function
+
 
     Dim filenumber As Integer 'a variable delcare to get in the value of freefile function / automatically assigns the value which represents the file
     Dim times_used As Integer = 1 'initializing times_used
-    Dim max_limit As Integer = 4 'set the maximum number of times
+    Dim max_limit As Integer = 15 'set the maximum number of times
 
     'http://vbdotnetforum.com/index.php?/topic/31-make-trial-version-of-software/
     Private Sub demosoft()
@@ -80,7 +178,7 @@ Public Class frmFPhotoM
         End If
     End Sub
 
-
+    ' POSSIBLE ISSUE: Windows UAC Registry Read/Write
     Private Sub regcheck()
         Dim regKey As RegistryKey 'Declaring a new registry key here
         regKey = Registry.LocalMachine.OpenSubKey("SOFTWARE", True) 'opening this subkey in the registry
@@ -92,7 +190,7 @@ Public Class frmFPhotoM
             MsgBox("Registry Error: Unable to register time_used.")
         End Try
         If times_used > max_limit Then 'Checking if times used is greater than maximum limit
-            MsgBox("Your trial period as expired!") 'If it is,well,we display a message box to the user saying its expired..
+            MsgBox("Your trial period has expired!") 'If it is,well,we display a message box to the user saying its expired..
             Application.Exit() 'And here,we exit the application again.
         End If
         regKey.Close() 'Our job is done,so we close the regkey here 
@@ -196,8 +294,6 @@ Public Class frmFPhotoM
 
     End Sub
 
-
-
     Private Sub cmdCategory_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCategory.SelectedIndexChanged
         Select Case (cmdCategory.SelectedItem.ToString)
             Case "ALPHA SECTOR"
@@ -246,15 +342,11 @@ Public Class frmFPhotoM
 
     Private Sub lstFileNames_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstFileNames.SelectedIndexChanged
 
-
     End Sub
-
 
     Private Sub CheckListFile_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckListFile.TextChanged
 
     End Sub
-
-
 
     Private Sub cmdFileSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFileSelect.Click
         Dim AllProcesses As Process()
@@ -761,7 +853,6 @@ Public Class frmFPhotoM
 
     End Sub
 
-
     Private Sub CellSiteSoftMain_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
         If (open_excel = True) Then
             Excel_Workbook.Close()
@@ -805,7 +896,6 @@ Public Class frmFPhotoM
         Shell(exec_string, vbMaximizedFocus)
 
     End Sub
-
 
     Private Sub Browse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Browse.Click
         OpenFileDialog2.FileName = Nothing
