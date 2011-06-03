@@ -34,23 +34,23 @@ Public Class frmFPhotoM
 
         strSaltedMD5LicenseKey = localLicenseKey(getMacAddress, DateToJDate(Now()))
 
-        'test if LIC file exist and if exteranlLIC = internalLIC
-        'if success on both counts then FULL VERSION (for a year/need to be work on)
-        'else the program will enter demo mode for 15 usages
+        ' test if LIC file exist and if exteranlLIC = internalLIC
+        ' if success on both counts then FULL VERSION (for a year/need to be work on)
+        ' else the program will enter demo mode for 20 usages
         Try
             LicenseKeyFile = File.OpenText("LicenseKey.txt")
             strSerialInput = LicenseKeyFile.ReadLine()
             LicenseKeyFile.Close()
 
         Catch ex As Exception
-            MessageBox.Show("Please register the software to continue legal usage. Thank you in advance.", "Licensing Warning")
+            MessageBox.Show("Please register the software soon. Thank you before hand.", "Licensing Warning")
         End Try
 
         ' test extLIC input against internal TRB Protection Algorithm
         If strSerialInput = strSaltedMD5LicenseKey Then
-            'FULL VERSION
+            ' FULL VERSION
         Else
-            'DEMO VERSION
+            ' DEMO VERSION
             demosoft()
             regcheck()
         End If
@@ -73,7 +73,6 @@ Public Class frmFPhotoM
         CheckListFile.Text = Nothing
         txtDestinationFolder.Text = Nothing
         'SetEnabled()
-
 
     End Sub
 
@@ -143,7 +142,8 @@ Public Class frmFPhotoM
             jSDateFile.Close()
 
         Catch ex As Exception
-            MessageBox.Show("jSDate cannot be opened.", "Warning Error")
+            ' jSDate.xml will be available after Help > Product Registration
+            ' MessageBox.Show("jSDate cannot be opened.", "Warning Error")
         End Try
 
         Dim strMD5LicenseKey As String = MD5CalcString(getMacAddress & txtjSDate) ' unobfuscate MD5 hash 
@@ -159,22 +159,25 @@ Public Class frmFPhotoM
     'http://vbdotnetforum.com/index.php?/topic/31-make-trial-version-of-software/
     Private Sub demosoft()
         filenumber = FreeFile() 'We assign the number which represents which file to open
-        If IO.File.Exists(Application.StartupPath & "Me.xml") Then 'Checking if file exists..
-            FileOpen(filenumber, Application.StartupPath & "Me.xml", OpenMode.Random, OpenAccess.ReadWrite) 'If exists,were opening it in readwrite mode.
+        If IO.File.Exists("DemoMe.xml") Then 'Checking if file exists..
+            FileOpen(filenumber, "DemoMe.xml", OpenMode.Random, OpenAccess.ReadWrite) 'If exists,were opening it in readwrite mode.
             FileGet(filenumber, times_used) 'Were reading from the file the value thats stored..ie the number of times he has used
-            ' MsgBox("You have executed this software " & (times_used) & " times") 'hmmm,were displaying it here..
-            FileClose(filenumber) 'Lets close the file now.
+            If times_used >= 4 Then
+                MessageBox.Show("You can only run this software " & (max_limit - times_used) & " more times.", "Licensing Warning")
+            End If
+
+            FileClose(filenumber)
             If times_used >= max_limit Then 'Were checking if the user has used the software more than the limit specified
-                MsgBox("Sorry,Your trial period is over!!Please purchase this software.") 'oops,if it has exceeded,then,he cant use it  
-                Application.Exit() 'Say Goodbye to the user..cos,he needs to purchase..We exit our app here.
+                MessageBox.Show("Sorry, Your trial period is over!! Please purchase this software.", "Licensing Error") 'oops,if it has exceeded,then,he cant use it  
+                Me.Close()
             End If
             times_used = times_used + 1 'if he has used it once before,lets make it 2 now since this is the 2nd time
-            FileOpen(filenumber, Application.StartupPath & "Me.xml", OpenMode.Random, OpenAccess.ReadWrite) 'storing the value back here 
+            FileOpen(filenumber, "DemoMe.xml", OpenMode.Random, OpenAccess.ReadWrite) 'storing the value back here 
             FilePut(filenumber, times_used)
             FileClose(filenumber)
         Else
             'This part is if the user is using the software for the 1st time.The file has to be created
-            FileOpen(filenumber, Application.StartupPath & "Me.xml", OpenMode.Random, OpenAccess.ReadWrite)
+            FileOpen(filenumber, "DemoMe.xml", OpenMode.Random, OpenAccess.ReadWrite)
             FilePut(filenumber, times_used) 'ok,now he has opened and used once,so,lets write it in here.
             FileClose(filenumber)
         End If
@@ -189,11 +192,11 @@ Public Class frmFPhotoM
         Try
             times_used = regKey.GetValue("FPhotoM", 0) 'We're getting how many times used
         Catch ex As Exception
-            MsgBox("Registry Error: Unable to register time_used.")
+            MessageBox.Show("Unable to register time_used.", "Registry Error")
         End Try
         If times_used > max_limit Then 'Checking if times used is greater than maximum limit
-            MsgBox("Your trial period has expired!") 'If it is,well,we display a message box to the user saying its expired..
-            Application.Exit() 'And here,we exit the application again.
+            MessageBox.Show("Your trial period has expired!", "Product Registration")
+            Me.Close()
         End If
         regKey.Close() 'Our job is done,so we close the regkey here 
     End Sub
@@ -350,7 +353,9 @@ Public Class frmFPhotoM
 
     End Sub
 
-    Private Sub cmdFileSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFileSelect.Click
+
+    Public Sub CheckListFileSelect()
+
         Dim AllProcesses As Process()
         Dim split_file_name As String()
         Dim index_upper_bound As Integer
@@ -359,7 +364,7 @@ Public Class frmFPhotoM
         Try
             OpenFileDialog1.ShowDialog()
             If (OpenFileDialog1.FileName = Nothing And template_file_selected = False) Then
-                MsgBox("Please select a Check List file")
+                MessageBox.Show("Please select a Check List file")
                 Return
             End If
 
@@ -385,18 +390,22 @@ Public Class frmFPhotoM
                     Next
                     open_excel = False
                 End If
-                '-------***---------------------------------------------------------***-----------
+                '-------***---------------------------------------------------------***-------
             Else
-                MsgBox("Please select an EXCEL file")
+                MessageBox.Show("Please select an EXCEL file")
                 Return
             End If
 
         Catch ex As Exception
-            MsgBox("Can't locate file")
+            MessageBox.Show("Can't locate file")
         End Try
-
     End Sub
-    Private Sub DestinationFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DestinationFolder.Click
+
+    Private Sub cmdFileSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFileSelect.Click
+        CheckListFileSelect()
+    End Sub
+
+    Public Sub SelectDestinationFolder()
         'Dim split_file2 As String()
         'Dim no_path_index As Integer
         Try
@@ -411,13 +420,16 @@ Public Class frmFPhotoM
             'lstFilesList2.Items.Add(split_file2(no_path_index)) 'Ommit the path and Add file name only
             'Next
         Catch ex As Exception
-            MsgBox("Can not select this folder")
+            MessageBox.Show("Can not select this folder")
             txtDestinationFolder.Text = Nothing
         End Try
     End Sub
 
-    Private Sub COPY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COPY.Click
+    Private Sub DestinationFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DestinationFolder.Click
+        SelectDestinationFolder()
+    End Sub
 
+    Public Sub SuperCOPY()
         Dim new_name_no_white_space As String
         Dim destionation_path_and_file As String
         'Dim refresh_files As String()
@@ -506,11 +518,14 @@ Public Class frmFPhotoM
             If (new_name_no_white_space = array_no_white_space) Then
                 Excel_Worksheet.Cells(search_row, 4) = "X"
                 Excel_Workbook.Save()
-                MsgBox("Check List File has been updated: " & vbLf & vbLf & " Row Number ---> " & search_row)
+                MessageBox.Show("Check List File has been updated: " & vbLf & vbLf & " Row Number ---> " & search_row)
                 Exit For
             End If
         Next search_row
+    End Sub
 
+    Private Sub COPY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COPY.Click
+        SuperCOPY()
     End Sub
 
     Private Sub txtDestinationFolder_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDestinationFolder.TextChanged
@@ -919,12 +934,20 @@ Public Class frmFPhotoM
     End Sub
 
     Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
-
+        SuperCOPY()
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
         Dim CustomerKeyForm As New frmCustomerKey
         CustomerKeyForm.Show()
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem3.Click
+        SelectDestinationFolder()
+    End Sub
+
+    Private Sub OpenToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenToolStripMenuItem1.Click
+        CheckListFileSelect()
     End Sub
 End Class
 
