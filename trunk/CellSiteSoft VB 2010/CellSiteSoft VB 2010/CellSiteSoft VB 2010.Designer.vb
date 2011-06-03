@@ -89,7 +89,7 @@ Partial Class frmFPhotoM
         Me.DirectoryTreeView.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DirectoryTreeView.Location = New System.Drawing.Point(18, 50)
         Me.DirectoryTreeView.Name = "DirectoryTreeView"
-        Me.DirectoryTreeView.Size = New System.Drawing.Size(210, 499)
+        Me.DirectoryTreeView.Size = New System.Drawing.Size(219, 499)
         Me.DirectoryTreeView.TabIndex = 0
         '
         'ComboBox_Drives
@@ -98,7 +98,7 @@ Partial Class frmFPhotoM
         Me.ComboBox_Drives.FormattingEnabled = True
         Me.ComboBox_Drives.Location = New System.Drawing.Point(18, 17)
         Me.ComboBox_Drives.Name = "ComboBox_Drives"
-        Me.ComboBox_Drives.Size = New System.Drawing.Size(210, 24)
+        Me.ComboBox_Drives.Size = New System.Drawing.Size(219, 24)
         Me.ComboBox_Drives.TabIndex = 1
         '
         'imageList1
@@ -208,10 +208,10 @@ Partial Class frmFPhotoM
         'ListView1
         '
         Me.ListView1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListView1.Location = New System.Drawing.Point(233, 50)
+        Me.ListView1.Location = New System.Drawing.Point(242, 50)
         Me.ListView1.Margin = New System.Windows.Forms.Padding(2)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(237, 499)
+        Me.ListView1.Size = New System.Drawing.Size(235, 499)
         Me.ListView1.TabIndex = 24
         Me.ListView1.UseCompatibleStateImageBehavior = False
         '
@@ -222,7 +222,7 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.cmdCategory)
         Me.GroupBox1.Controls.Add(Me.lstFileNames)
-        Me.GroupBox1.Location = New System.Drawing.Point(545, 165)
+        Me.GroupBox1.Location = New System.Drawing.Point(551, 165)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(270, 569)
         Me.GroupBox1.TabIndex = 26
@@ -239,13 +239,13 @@ Partial Class frmFPhotoM
         Me.GroupBox2.Controls.Add(Me.DirectoryTreeView)
         Me.GroupBox2.Location = New System.Drawing.Point(41, 165)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(488, 569)
+        Me.GroupBox2.Size = New System.Drawing.Size(496, 569)
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
         '
         'txtImageSelected
         '
-        Me.txtImageSelected.Location = New System.Drawing.Point(235, 19)
+        Me.txtImageSelected.Location = New System.Drawing.Point(242, 19)
         Me.txtImageSelected.Name = "txtImageSelected"
         Me.txtImageSelected.Size = New System.Drawing.Size(235, 20)
         Me.txtImageSelected.TabIndex = 25
@@ -569,7 +569,7 @@ Partial Class frmFPhotoM
         Me.MaximizeBox = False
         Me.Name = "frmFPhotoM"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "TRB Software - Field Photo Management v0.2"
+        Me.Text = "TRB Software - Field Photo Management v0.5"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
