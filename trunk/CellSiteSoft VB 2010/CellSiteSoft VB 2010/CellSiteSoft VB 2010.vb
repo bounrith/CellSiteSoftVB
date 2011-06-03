@@ -35,7 +35,7 @@ Public Class frmFPhotoM
         strSaltedMD5LicenseKey = localLicenseKey(getMacAddress, DateToJDate(Now()))
 
         'test if LIC file exist and if exteranlLIC = internalLIC
-        'if success on both counts then FULL VERSION (for a year)
+        'if success on both counts then FULL VERSION (for a year/need to be work on)
         'else the program will enter demo mode for 15 usages
         Try
             LicenseKeyFile = File.OpenText("LicenseKey.txt")
@@ -43,7 +43,7 @@ Public Class frmFPhotoM
             LicenseKeyFile.Close()
 
         Catch ex As Exception
-            MessageBox.Show("Licensing Warning: Please register the software soon. Thank you before hand.")
+            MessageBox.Show("Please register the software soon. Thank you before hand.", "Licensing Warning")
         End Try
 
         ' test extLIC input against internal TRB Protection Algorithm
@@ -143,7 +143,7 @@ Public Class frmFPhotoM
             jSDateFile.Close()
 
         Catch ex As Exception
-            MessageBox.Show("Warning Error: jSDate cannot be opened.")
+            MessageBox.Show("jSDate cannot be opened.", "Warning Error")
         End Try
 
         Dim strMD5LicenseKey As String = MD5CalcString(getMacAddress & txtjSDate) ' unobfuscate MD5 hash 
@@ -359,7 +359,7 @@ Public Class frmFPhotoM
         Try
             OpenFileDialog1.ShowDialog()
             If (OpenFileDialog1.FileName = Nothing And template_file_selected = False) Then
-                MsgBox("Please select a Check List file ")
+                MsgBox("Please select a Check List file")
                 Return
             End If
 
