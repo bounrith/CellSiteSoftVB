@@ -51,8 +51,8 @@ Public Class frmFPhotoM
             ' FULL VERSION
         Else
             ' DEMO VERSION
-            demosoft()
-            regcheck()
+            'demosoft()
+            'regcheck()
         End If
 
         ComboBox_Drives.Text = "Select a Drive"
@@ -162,7 +162,7 @@ Public Class frmFPhotoM
         If IO.File.Exists("DemoMe.xml") Then 'Checking if file exists..
             FileOpen(filenumber, "DemoMe.xml", OpenMode.Random, OpenAccess.ReadWrite) 'If exists,were opening it in readwrite mode.
             FileGet(filenumber, times_used) 'Were reading from the file the value thats stored..ie the number of times he has used
-            If times_used >= 4 Then
+            If times_used >= 14 Then
                 MessageBox.Show("You can only run this software " & (max_limit - times_used) & " more times.", "Licensing Warning")
             End If
 
