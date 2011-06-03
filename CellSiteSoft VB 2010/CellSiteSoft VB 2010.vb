@@ -48,31 +48,33 @@ Public Class frmFPhotoM
 
         ' test extLIC input against internal TRB Protection Algorithm
         If strSerialInput = strSaltedMD5LicenseKey Then
+            'FULL VERSION
+        Else
+            'DEMO VERSION
+            demosoft()
+            regcheck()
+        End If
 
-            ' FULL VERSION BEGIN
         ComboBox_Drives.Text = "Select a Drive"
         Load_Drives()
         Load_Category()
+
         FolderBrowserDialog1.SelectedPath = System.IO.Directory.GetCurrentDirectory()
         thread1 = New System.Threading.Thread(AddressOf ImageList_Load1)
         thread2 = New System.Threading.Thread(AddressOf ImageList_Load2)
         Control.CheckForIllegalCrossThreadCalls = False
 
-            '---**To Determin the File Dialog is nothing or has value**-------
+        '---**To Determin the File Dialog is nothing or has value**-------
         template_file_selected = False
         OpenFileDialog1.FileName = Nothing
-            '---**---------------------------------------------------**-------
+        '---**---------------------------------------------------**-------
 
         image_full_path = Nothing
         CheckListFile.Text = Nothing
         txtDestinationFolder.Text = Nothing
         'SetEnabled()
-            ' FULL VERSION END
-        Else
-            'enter usage count demo version
-            demosoft()
-            regcheck()
-        End If
+
+
     End Sub
 
     Function getMacAddress()
