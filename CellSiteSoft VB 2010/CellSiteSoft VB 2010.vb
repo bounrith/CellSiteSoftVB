@@ -51,7 +51,7 @@ Public Class frmFPhotoM
             ' FULL VERSION
         Else
             ' DEMO VERSION
-            'demosoft()
+            demosoft()
             'regcheck()
         End If
 
@@ -183,23 +183,6 @@ Public Class frmFPhotoM
         End If
     End Sub
 
-    ' POSSIBLE ISSUE: Windows UAC Registry Read/Write
-    Private Sub regcheck()
-        Dim regKey As RegistryKey 'Declaring a new registry key here
-        regKey = Registry.LocalMachine.OpenSubKey("SOFTWARE", True) 'opening this subkey in the registry
-        regKey.CreateSubKey("FPhotoM") 'Were creating a new subkey called FPhotoM
-        regKey.SetValue("FPhotoM", times_used) 'We're setting how many times used in the registry
-        Try
-            times_used = regKey.GetValue("FPhotoM", 0) 'We're getting how many times used
-        Catch ex As Exception
-            MessageBox.Show("Unable to register time_used.", "Registry Error")
-        End Try
-        If times_used > max_limit Then 'Checking if times used is greater than maximum limit
-            MessageBox.Show("Your trial period has expired!", "Product Registration")
-            Me.Close()
-        End If
-        regKey.Close() 'Our job is done,so we close the regkey here 
-    End Sub
 
     Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Drives.SelectedIndexChanged
         Dim split_drive_letter As String()
