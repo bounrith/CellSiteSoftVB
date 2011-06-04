@@ -43,7 +43,7 @@ Public Class frmFPhotoM
             LicenseKeyFile.Close()
 
         Catch ex As Exception
-            MessageBox.Show("Please register the software soon. Thank you before hand.", "Licensing Warning")
+            MessageBox.Show("Please register the software to continue legal usage. Thank you in advance.", "Licensing Warning")
         End Try
 
         ' test extLIC input against internal TRB Protection Algorithm
