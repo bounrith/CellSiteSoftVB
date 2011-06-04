@@ -88,18 +88,20 @@ Partial Class frmFPhotoM
         'DirectoryTreeView
         '
         Me.DirectoryTreeView.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DirectoryTreeView.Location = New System.Drawing.Point(18, 50)
+        Me.DirectoryTreeView.Location = New System.Drawing.Point(24, 62)
+        Me.DirectoryTreeView.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DirectoryTreeView.Name = "DirectoryTreeView"
-        Me.DirectoryTreeView.Size = New System.Drawing.Size(219, 499)
+        Me.DirectoryTreeView.Size = New System.Drawing.Size(291, 613)
         Me.DirectoryTreeView.TabIndex = 0
         '
         'ComboBox_Drives
         '
         Me.ComboBox_Drives.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox_Drives.FormattingEnabled = True
-        Me.ComboBox_Drives.Location = New System.Drawing.Point(18, 17)
+        Me.ComboBox_Drives.Location = New System.Drawing.Point(24, 21)
+        Me.ComboBox_Drives.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ComboBox_Drives.Name = "ComboBox_Drives"
-        Me.ComboBox_Drives.Size = New System.Drawing.Size(219, 24)
+        Me.ComboBox_Drives.Size = New System.Drawing.Size(291, 26)
         Me.ComboBox_Drives.TabIndex = 1
         '
         'imageList1
@@ -112,19 +114,21 @@ Partial Class frmFPhotoM
         '
         Me.lstFileNames.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstFileNames.FormattingEnabled = True
-        Me.lstFileNames.ItemHeight = 16
-        Me.lstFileNames.Location = New System.Drawing.Point(17, 65)
+        Me.lstFileNames.ItemHeight = 20
+        Me.lstFileNames.Location = New System.Drawing.Point(23, 80)
+        Me.lstFileNames.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.lstFileNames.Name = "lstFileNames"
-        Me.lstFileNames.Size = New System.Drawing.Size(236, 484)
+        Me.lstFileNames.Size = New System.Drawing.Size(313, 584)
         Me.lstFileNames.TabIndex = 10
         '
         'cmdCategory
         '
         Me.cmdCategory.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdCategory.FormattingEnabled = True
-        Me.cmdCategory.Location = New System.Drawing.Point(17, 17)
+        Me.cmdCategory.Location = New System.Drawing.Point(23, 21)
+        Me.cmdCategory.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdCategory.Name = "cmdCategory"
-        Me.cmdCategory.Size = New System.Drawing.Size(236, 24)
+        Me.cmdCategory.Size = New System.Drawing.Size(313, 26)
         Me.cmdCategory.TabIndex = 11
         Me.cmdCategory.Text = "Select Category"
         '
@@ -134,9 +138,10 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSiteName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSiteName.Location = New System.Drawing.Point(196, 133)
+        Me.txtSiteName.Location = New System.Drawing.Point(261, 164)
+        Me.txtSiteName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSiteName.Name = "txtSiteName"
-        Me.txtSiteName.Size = New System.Drawing.Size(168, 22)
+        Me.txtSiteName.Size = New System.Drawing.Size(223, 26)
         Me.txtSiteName.TabIndex = 12
         '
         'txtSiteID
@@ -145,9 +150,10 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSiteID.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSiteID.Location = New System.Drawing.Point(430, 133)
+        Me.txtSiteID.Location = New System.Drawing.Point(573, 164)
+        Me.txtSiteID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSiteID.Name = "txtSiteID"
-        Me.txtSiteID.Size = New System.Drawing.Size(166, 22)
+        Me.txtSiteID.Size = New System.Drawing.Size(220, 26)
         Me.txtSiteID.TabIndex = 13
         '
         'lblSiteName
@@ -157,9 +163,10 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblSiteName.AutoSize = True
         Me.lblSiteName.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSiteName.Location = New System.Drawing.Point(114, 134)
+        Me.lblSiteName.Location = New System.Drawing.Point(152, 165)
+        Me.lblSiteName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSiteName.Name = "lblSiteName"
-        Me.lblSiteName.Size = New System.Drawing.Size(76, 20)
+        Me.lblSiteName.Size = New System.Drawing.Size(93, 24)
         Me.lblSiteName.TabIndex = 15
         Me.lblSiteName.Text = "Site Name:"
         '
@@ -170,9 +177,10 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(370, 134)
+        Me.Label2.Location = New System.Drawing.Point(493, 165)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(54, 20)
+        Me.Label2.Size = New System.Drawing.Size(65, 24)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Site ID:"
         '
@@ -184,9 +192,10 @@ Partial Class frmFPhotoM
         Me.cmdFileSelect.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cmdFileSelect.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdFileSelect.ForeColor = System.Drawing.Color.Black
-        Me.cmdFileSelect.Location = New System.Drawing.Point(968, 131)
+        Me.cmdFileSelect.Location = New System.Drawing.Point(1291, 161)
+        Me.cmdFileSelect.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmdFileSelect.Name = "cmdFileSelect"
-        Me.cmdFileSelect.Size = New System.Drawing.Size(60, 26)
+        Me.cmdFileSelect.Size = New System.Drawing.Size(80, 32)
         Me.cmdFileSelect.TabIndex = 18
         Me.cmdFileSelect.Text = "Find..."
         Me.cmdFileSelect.UseVisualStyleBackColor = False
@@ -197,9 +206,10 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckListFile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckListFile.Location = New System.Drawing.Point(713, 133)
+        Me.CheckListFile.Location = New System.Drawing.Point(951, 164)
+        Me.CheckListFile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CheckListFile.Name = "CheckListFile"
-        Me.CheckListFile.Size = New System.Drawing.Size(249, 22)
+        Me.CheckListFile.Size = New System.Drawing.Size(331, 26)
         Me.CheckListFile.TabIndex = 19
         '
         'OpenFileDialog1
@@ -209,10 +219,12 @@ Partial Class frmFPhotoM
         'ListView1
         '
         Me.ListView1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListView1.Location = New System.Drawing.Point(242, 50)
-        Me.ListView1.Margin = New System.Windows.Forms.Padding(2)
+        Me.ListView1.HideSelection = False
+        Me.ListView1.Location = New System.Drawing.Point(323, 62)
+        Me.ListView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ListView1.MultiSelect = False
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(235, 499)
+        Me.ListView1.Size = New System.Drawing.Size(312, 613)
         Me.ListView1.TabIndex = 24
         Me.ListView1.UseCompatibleStateImageBehavior = False
         '
@@ -223,9 +235,11 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.cmdCategory)
         Me.GroupBox1.Controls.Add(Me.lstFileNames)
-        Me.GroupBox1.Location = New System.Drawing.Point(551, 165)
+        Me.GroupBox1.Location = New System.Drawing.Point(735, 203)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(270, 569)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(360, 700)
         Me.GroupBox1.TabIndex = 26
         Me.GroupBox1.TabStop = False
         '
@@ -238,17 +252,20 @@ Partial Class frmFPhotoM
         Me.GroupBox2.Controls.Add(Me.ListView1)
         Me.GroupBox2.Controls.Add(Me.ComboBox_Drives)
         Me.GroupBox2.Controls.Add(Me.DirectoryTreeView)
-        Me.GroupBox2.Location = New System.Drawing.Point(41, 165)
+        Me.GroupBox2.Location = New System.Drawing.Point(55, 203)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(496, 569)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(661, 700)
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
         '
         'txtImageSelected
         '
-        Me.txtImageSelected.Location = New System.Drawing.Point(242, 19)
+        Me.txtImageSelected.Location = New System.Drawing.Point(323, 23)
+        Me.txtImageSelected.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtImageSelected.Name = "txtImageSelected"
-        Me.txtImageSelected.Size = New System.Drawing.Size(235, 20)
+        Me.txtImageSelected.Size = New System.Drawing.Size(312, 22)
         Me.txtImageSelected.TabIndex = 25
         Me.txtImageSelected.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -259,9 +276,10 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(391, 41)
+        Me.Label3.Location = New System.Drawing.Point(521, 50)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(361, 34)
+        Me.Label3.Size = New System.Drawing.Size(462, 44)
         Me.Label3.TabIndex = 29
         Me.Label3.Text = "Field Photo Management"
         '
@@ -280,7 +298,8 @@ Partial Class frmFPhotoM
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem1, Me.ToolsToolStripMenuItem, Me.HelpToolStripMenuItem1})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1142, 24)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1523, 28)
         Me.MenuStrip1.TabIndex = 32
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -288,7 +307,7 @@ Partial Class frmFPhotoM
         '
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem1, Me.ToolStripMenuItem3, Me.SaveToolStripMenuItem, Me.toolStripSeparator2, Me.ExitToolStripMenuItem1})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(44, 24)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'OpenToolStripMenuItem1
@@ -298,13 +317,13 @@ Partial Class frmFPhotoM
         Me.OpenToolStripMenuItem1.Name = "OpenToolStripMenuItem1"
         Me.OpenToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.OpenToolStripMenuItem1.ShowShortcutKeys = False
-        Me.OpenToolStripMenuItem1.Size = New System.Drawing.Size(179, 22)
+        Me.OpenToolStripMenuItem1.Size = New System.Drawing.Size(223, 24)
         Me.OpenToolStripMenuItem1.Text = "Open Check &List"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(179, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(223, 24)
         Me.ToolStripMenuItem3.Text = "Select Copy To Folder"
         '
         'SaveToolStripMenuItem
@@ -314,45 +333,45 @@ Partial Class frmFPhotoM
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.SaveToolStripMenuItem.ShowShortcutKeys = False
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(223, 24)
         Me.SaveToolStripMenuItem.Text = "C&opy"
         '
         'toolStripSeparator2
         '
         Me.toolStripSeparator2.Name = "toolStripSeparator2"
-        Me.toolStripSeparator2.Size = New System.Drawing.Size(176, 6)
+        Me.toolStripSeparator2.Size = New System.Drawing.Size(220, 6)
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(179, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(223, 24)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'EditToolStripMenuItem1
         '
         Me.EditToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.toolStripSeparator3, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.toolStripSeparator4, Me.SelectAllToolStripMenuItem})
         Me.EditToolStripMenuItem1.Name = "EditToolStripMenuItem1"
-        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
+        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(47, 24)
         Me.EditToolStripMenuItem1.Text = "&Edit"
         '
         'UndoToolStripMenuItem
         '
         Me.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem"
         Me.UndoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(165, 24)
         Me.UndoToolStripMenuItem.Text = "&Undo"
         '
         'RedoToolStripMenuItem
         '
         Me.RedoToolStripMenuItem.Name = "RedoToolStripMenuItem"
         Me.RedoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(165, 24)
         Me.RedoToolStripMenuItem.Text = "&Redo"
         '
         'toolStripSeparator3
         '
         Me.toolStripSeparator3.Name = "toolStripSeparator3"
-        Me.toolStripSeparator3.Size = New System.Drawing.Size(136, 6)
+        Me.toolStripSeparator3.Size = New System.Drawing.Size(162, 6)
         '
         'CutToolStripMenuItem
         '
@@ -360,7 +379,7 @@ Partial Class frmFPhotoM
         Me.CutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
         Me.CutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(165, 24)
         Me.CutToolStripMenuItem.Text = "Cu&t"
         '
         'CopyToolStripMenuItem
@@ -369,7 +388,7 @@ Partial Class frmFPhotoM
         Me.CopyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
         Me.CopyToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(165, 24)
         Me.CopyToolStripMenuItem.Text = "&Copy"
         '
         'PasteToolStripMenuItem
@@ -378,85 +397,85 @@ Partial Class frmFPhotoM
         Me.PasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
         Me.PasteToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(165, 24)
         Me.PasteToolStripMenuItem.Text = "&Paste"
         '
         'toolStripSeparator4
         '
         Me.toolStripSeparator4.Name = "toolStripSeparator4"
-        Me.toolStripSeparator4.Size = New System.Drawing.Size(136, 6)
+        Me.toolStripSeparator4.Size = New System.Drawing.Size(162, 6)
         '
         'SelectAllToolStripMenuItem
         '
         Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(165, 24)
         Me.SelectAllToolStripMenuItem.Text = "Select &All"
         '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomizeToolStripMenuItem, Me.OptionsToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(57, 24)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'CustomizeToolStripMenuItem
         '
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(147, 24)
         Me.CustomizeToolStripMenuItem.Text = "&Customize"
         '
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(147, 24)
         Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'HelpToolStripMenuItem1
         '
         Me.HelpToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContentsToolStripMenuItem, Me.IndexToolStripMenuItem, Me.SearchToolStripMenuItem, Me.toolStripSeparator5, Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.AboutToolStripMenuItem1})
         Me.HelpToolStripMenuItem1.Name = "HelpToolStripMenuItem1"
-        Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(40, 20)
+        Me.HelpToolStripMenuItem1.Size = New System.Drawing.Size(53, 24)
         Me.HelpToolStripMenuItem1.Text = "&Help"
         '
         'ContentsToolStripMenuItem
         '
         Me.ContentsToolStripMenuItem.Name = "ContentsToolStripMenuItem"
-        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(187, 24)
         Me.ContentsToolStripMenuItem.Text = "&Contents"
         '
         'IndexToolStripMenuItem
         '
         Me.IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
-        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(187, 24)
         Me.IndexToolStripMenuItem.Text = "&Index"
         '
         'SearchToolStripMenuItem
         '
         Me.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem"
-        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(187, 24)
         Me.SearchToolStripMenuItem.Text = "&Search"
         '
         'toolStripSeparator5
         '
         Me.toolStripSeparator5.Name = "toolStripSeparator5"
-        Me.toolStripSeparator5.Size = New System.Drawing.Size(151, 6)
+        Me.toolStripSeparator5.Size = New System.Drawing.Size(184, 6)
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(187, 24)
         Me.ToolStripMenuItem1.Text = "Register Product"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(154, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(187, 24)
         Me.ToolStripMenuItem2.Text = "Get Support"
         '
         'AboutToolStripMenuItem1
         '
         Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(187, 24)
         Me.AboutToolStripMenuItem1.Text = "&About..."
         '
         'Label1
@@ -466,9 +485,10 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial Narrow", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(602, 134)
+        Me.Label1.Location = New System.Drawing.Point(803, 165)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 20)
+        Me.Label1.Size = New System.Drawing.Size(129, 24)
         Me.Label1.TabIndex = 33
         Me.Label1.Text = "Check List File:"
         '
@@ -479,9 +499,10 @@ Partial Class frmFPhotoM
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(433, 76)
+        Me.Label4.Location = New System.Drawing.Point(577, 94)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(277, 15)
+        Me.Label4.Size = New System.Drawing.Size(339, 17)
         Me.Label4.TabIndex = 34
         Me.Label4.Text = "A CELL SITE MANAGEMENT SOFTWARE UTILITY"
         '
@@ -489,9 +510,10 @@ Partial Class frmFPhotoM
         '
         Me.DestinationFolder.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DestinationFolder.Font = New System.Drawing.Font("Arial Narrow", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DestinationFolder.Location = New System.Drawing.Point(19, 17)
+        Me.DestinationFolder.Location = New System.Drawing.Point(25, 21)
+        Me.DestinationFolder.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DestinationFolder.Name = "DestinationFolder"
-        Me.DestinationFolder.Size = New System.Drawing.Size(229, 28)
+        Me.DestinationFolder.Size = New System.Drawing.Size(305, 34)
         Me.DestinationFolder.TabIndex = 20
         Me.DestinationFolder.Text = "Copy To Folder..."
         Me.DestinationFolder.UseVisualStyleBackColor = False
@@ -499,17 +521,19 @@ Partial Class frmFPhotoM
         'txtDestinationFolder
         '
         Me.txtDestinationFolder.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDestinationFolder.Location = New System.Drawing.Point(19, 52)
+        Me.txtDestinationFolder.Location = New System.Drawing.Point(25, 64)
+        Me.txtDestinationFolder.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtDestinationFolder.Name = "txtDestinationFolder"
-        Me.txtDestinationFolder.Size = New System.Drawing.Size(174, 22)
+        Me.txtDestinationFolder.Size = New System.Drawing.Size(231, 26)
         Me.txtDestinationFolder.TabIndex = 21
         '
         'Browse
         '
         Me.Browse.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Browse.Location = New System.Drawing.Point(199, 52)
+        Me.Browse.Location = New System.Drawing.Point(265, 64)
+        Me.Browse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Browse.Name = "Browse"
-        Me.Browse.Size = New System.Drawing.Size(49, 22)
+        Me.Browse.Size = New System.Drawing.Size(65, 27)
         Me.Browse.TabIndex = 31
         Me.Browse.Text = "Open"
         Me.Browse.UseVisualStyleBackColor = True
@@ -518,9 +542,10 @@ Partial Class frmFPhotoM
         '
         Me.COPY.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.COPY.Font = New System.Drawing.Font("Arial Narrow", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.COPY.Location = New System.Drawing.Point(19, 517)
+        Me.COPY.Location = New System.Drawing.Point(25, 636)
+        Me.COPY.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.COPY.Name = "COPY"
-        Me.COPY.Size = New System.Drawing.Size(229, 32)
+        Me.COPY.Size = New System.Drawing.Size(305, 39)
         Me.COPY.TabIndex = 23
         Me.COPY.Text = "C&OPY"
         Me.COPY.UseVisualStyleBackColor = False
@@ -528,10 +553,10 @@ Partial Class frmFPhotoM
         'ListView2
         '
         Me.ListView2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListView2.Location = New System.Drawing.Point(19, 79)
-        Me.ListView2.Margin = New System.Windows.Forms.Padding(2)
+        Me.ListView2.Location = New System.Drawing.Point(25, 97)
+        Me.ListView2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ListView2.Name = "ListView2"
-        Me.ListView2.Size = New System.Drawing.Size(229, 428)
+        Me.ListView2.Size = New System.Drawing.Size(304, 526)
         Me.ListView2.TabIndex = 31
         Me.ListView2.UseCompatibleStateImageBehavior = False
         '
@@ -545,20 +570,22 @@ Partial Class frmFPhotoM
         Me.GroupBox3.Controls.Add(Me.Browse)
         Me.GroupBox3.Controls.Add(Me.txtDestinationFolder)
         Me.GroupBox3.Controls.Add(Me.DestinationFolder)
-        Me.GroupBox3.Location = New System.Drawing.Point(835, 165)
+        Me.GroupBox3.Location = New System.Drawing.Point(1113, 203)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(266, 569)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Size = New System.Drawing.Size(355, 700)
         Me.GroupBox3.TabIndex = 28
         Me.GroupBox3.TabStop = False
         '
         'frmFPhotoM
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
-        Me.ClientSize = New System.Drawing.Size(1142, 746)
+        Me.ClientSize = New System.Drawing.Size(1523, 918)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label3)
@@ -573,6 +600,7 @@ Partial Class frmFPhotoM
         Me.Controls.Add(Me.txtSiteName)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.Name = "frmFPhotoM"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
