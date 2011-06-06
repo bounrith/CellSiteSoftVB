@@ -27,6 +27,7 @@ Public Class frmFPhotoM
     Dim Excel_Worksheet As Excel.Worksheet
     Dim template_file_selected As Boolean
     Dim strSerialInput As String
+    Dim user_folder_desktop As String
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim strSaltedMD5LicenseKey As String
@@ -55,8 +56,11 @@ Public Class frmFPhotoM
             'regcheck()
         End If
 
-        ComboBox_Drives.Text = "Select a Drive"
+        user_folder_desktop = Environment.GetEnvironmentVariable("UserProfile") & "\Desktop"
+        ComboBox_Drives.Text = "Fixed C:\"
         Load_Drives()
+        LoadFolderTree("c:\")
+        DirectoryTreeView.TopNode.Expand()
         Load_Category()
 
         FolderBrowserDialog1.SelectedPath = System.IO.Directory.GetCurrentDirectory()
@@ -212,6 +216,7 @@ Public Class frmFPhotoM
         Else
             Throw New System.IO.DirectoryNotFoundException()
         End If
+        DirectoryTreeView.TopNode.Expand()
     End Sub
 
     'Changed from public to private
@@ -345,6 +350,7 @@ Public Class frmFPhotoM
         Dim left_3_string As String
 
         Try
+            OpenFileDialog1.InitialDirectory = user_folder_desktop
             OpenFileDialog1.ShowDialog()
             If (OpenFileDialog1.FileName = Nothing And template_file_selected = False) Then
                 MessageBox.Show("Please select a Check List file")
@@ -392,6 +398,7 @@ Public Class frmFPhotoM
         'Dim split_file2 As String()
         'Dim no_path_index As Integer
         Try
+            FolderBrowserDialog1.SelectedPath = user_folder_desktop
             FolderBrowserDialog1.ShowDialog()
             txtDestinationFolder.Text = FolderBrowserDialog1.SelectedPath.ToString
             AllFiles2 = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
@@ -488,6 +495,7 @@ Public Class frmFPhotoM
         new_name_no_white_space = Regex.Replace(new_name_no_white_space, txtSiteID.Text, "SiteID")
         new_name_no_white_space = Replace(new_name_no_white_space, "_", "") ' Delete underscore
         new_name_no_white_space = Replace(new_name_no_white_space, "-", "") ' Delete dash
+        new_name_no_white_space = LCase(new_name_no_white_space) ' Convert string to lowercase to handle upp/lower case mismatch
 
         For search_row = 1 To total_row
             array_no_white_space = Replace(data_from_excel(search_row, 2), "/", "_Or_")
@@ -495,6 +503,7 @@ Public Class frmFPhotoM
             array_no_white_space = Replace(array_no_white_space, " ", "")
             array_no_white_space = Replace(array_no_white_space, "_", "") ' Delete underscore
             array_no_white_space = Replace(array_no_white_space, "-", "") ' Delete delete dash
+            array_no_white_space = LCase(array_no_white_space) ' Convert string to lowercase to handle upp/lower case mismatch
             'MsgBox("Array no white space = " & array_no_white_space)
             'MsgBox("New Name no white space = " & new_name_no_white_space)
 
@@ -562,7 +571,7 @@ Public Class frmFPhotoM
         lstFileNames.Items.Add("035_" & txtSiteID.Text & "_Beta_top_buss_bar")
         lstFileNames.Items.Add("036_" & txtSiteID.Text & "_Beta_RET_coax_ground")
         lstFileNames.Items.Add("037_" & txtSiteID.Text & "_Beta_RET_ground lead")
-        lstFileNames.Items.Add("038_" & txtSiteID.Text & "_Beta_top_coax_grounds")
+        lstFileNames.Items.Add("038_" & txtSiteID.Text & "_Beta_coax_grounds")
     End Sub
     Private Sub Populate_Charlie()
         lstFileNames.Items.Clear()
