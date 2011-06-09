@@ -28,6 +28,8 @@ Public Class frmFPhotoM
     Dim template_file_selected As Boolean
     Dim strSerialInput As String
     Dim user_folder_desktop As String
+    Dim move_full_path As String
+    Dim clean_path As String
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim strSaltedMD5LicenseKey As String
@@ -266,7 +268,6 @@ Public Class frmFPhotoM
     ' Changed from Public to private
     Private Sub DirectoryTreeView_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles DirectoryTreeView.AfterSelect
         Dim split1 As String()
-        Dim clean_path As String
         Dim number_of_split As Integer
 
         'MsgBox("The Orginal Path is: " & DirectoryTreeView.SelectedNode.FullPath.ToString)
@@ -444,6 +445,13 @@ Public Class frmFPhotoM
         destionation_path_and_file = txtDestinationFolder.Text & "\" & new_name_no_white_space & ".jpg"
 
         FileCopy(image_full_path, destionation_path_and_file)
+
+        If (txtMoveFolder.Text <> Nothing) Then
+            My.Computer.FileSystem.MoveFile(image_full_path, move_full_path)
+            AllFiles = Directory.GetFiles(clean_path, "*.*", SearchOption.TopDirectoryOnly)
+            ThumbnailView(1) ' refresh the image list
+        End If
+
         check_list_file_name = CheckListFile.Text
         'refresh_files = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
         AllFiles2 = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
@@ -881,7 +889,7 @@ Public Class frmFPhotoM
             listViewItem1 = ListView1.Items.Item(i)
             If listViewItem1.Selected Then
                 fname = listViewItem1.Text
-                txtImageSelected.Text = fname
+                move_full_path = txtMoveFolder.Text & "\" & fname
                 i = ListView1.Items.Count + 1 'Exit the for loop, what happen to the keyword break?
             End If
         Next
@@ -940,6 +948,17 @@ Public Class frmFPhotoM
 
     Private Sub OpenToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenToolStripMenuItem1.Click
         CheckListFileSelect()
+    End Sub
+
+    Private Sub Move_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Move.Click
+        Try
+            FolderBrowserDialog1.SelectedPath = user_folder_desktop
+            FolderBrowserDialog1.ShowDialog()
+            txtMoveFolder.Text = FolderBrowserDialog1.SelectedPath.ToString
+        Catch ex As Exception
+            MessageBox.Show("Can not select this folder")
+            txtMoveFolder.Text = Nothing
+        End Try
     End Sub
 End Class
 
