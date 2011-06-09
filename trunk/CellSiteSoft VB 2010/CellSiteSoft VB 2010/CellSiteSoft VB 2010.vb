@@ -571,7 +571,7 @@ Public Class frmFPhotoM
         lstFileNames.Items.Add("035_" & txtSiteID.Text & "_Beta_top_buss_bar")
         lstFileNames.Items.Add("036_" & txtSiteID.Text & "_Beta_RET_coax_ground")
         lstFileNames.Items.Add("037_" & txtSiteID.Text & "_Beta_RET_ground lead")
-        lstFileNames.Items.Add("038_" & txtSiteID.Text & "_Beta_coax_grounds")
+        lstFileNames.Items.Add("038_" & txtSiteID.Text & "_Beta_top_coax_grounds")
     End Sub
     Private Sub Populate_Charlie()
         lstFileNames.Items.Clear()
