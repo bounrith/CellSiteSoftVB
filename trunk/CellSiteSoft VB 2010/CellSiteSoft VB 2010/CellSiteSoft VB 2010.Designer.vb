@@ -40,7 +40,7 @@ Partial Class frmFPhotoM
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.txtImageSelected = New System.Windows.Forms.TextBox()
+        Me.txtMoveFolder = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
@@ -79,6 +79,7 @@ Partial Class frmFPhotoM
         Me.COPY = New System.Windows.Forms.Button()
         Me.ListView2 = New System.Windows.Forms.ListView()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Move = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -208,7 +209,7 @@ Partial Class frmFPhotoM
         Me.ListView1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListView1.HideSelection = False
         Me.ListView1.Location = New System.Drawing.Point(242, 50)
-        Me.ListView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ListView1.Margin = New System.Windows.Forms.Padding(2)
         Me.ListView1.MultiSelect = False
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(235, 499)
@@ -233,7 +234,8 @@ Partial Class frmFPhotoM
         Me.GroupBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox2.Controls.Add(Me.txtImageSelected)
+        Me.GroupBox2.Controls.Add(Me.Move)
+        Me.GroupBox2.Controls.Add(Me.txtMoveFolder)
         Me.GroupBox2.Controls.Add(Me.ListView1)
         Me.GroupBox2.Controls.Add(Me.ComboBox_Drives)
         Me.GroupBox2.Controls.Add(Me.DirectoryTreeView)
@@ -243,13 +245,13 @@ Partial Class frmFPhotoM
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
         '
-        'txtImageSelected
+        'txtMoveFolder
         '
-        Me.txtImageSelected.Location = New System.Drawing.Point(242, 19)
-        Me.txtImageSelected.Name = "txtImageSelected"
-        Me.txtImageSelected.Size = New System.Drawing.Size(235, 20)
-        Me.txtImageSelected.TabIndex = 25
-        Me.txtImageSelected.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtMoveFolder.Location = New System.Drawing.Point(317, 19)
+        Me.txtMoveFolder.Name = "txtMoveFolder"
+        Me.txtMoveFolder.Size = New System.Drawing.Size(160, 20)
+        Me.txtMoveFolder.TabIndex = 25
+        Me.txtMoveFolder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label3
         '
@@ -528,7 +530,7 @@ Partial Class frmFPhotoM
         '
         Me.ListView2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListView2.Location = New System.Drawing.Point(19, 79)
-        Me.ListView2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ListView2.Margin = New System.Windows.Forms.Padding(2)
         Me.ListView2.Name = "ListView2"
         Me.ListView2.Size = New System.Drawing.Size(229, 433)
         Me.ListView2.TabIndex = 31
@@ -549,6 +551,16 @@ Partial Class frmFPhotoM
         Me.GroupBox3.Size = New System.Drawing.Size(266, 565)
         Me.GroupBox3.TabIndex = 28
         Me.GroupBox3.TabStop = False
+        '
+        'Move
+        '
+        Me.Move.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Move.Location = New System.Drawing.Point(242, 16)
+        Me.Move.Name = "Move"
+        Me.Move.Size = New System.Drawing.Size(69, 23)
+        Me.Move.TabIndex = 35
+        Me.Move.Text = "Move To"
+        Me.Move.UseVisualStyleBackColor = True
         '
         'frmFPhotoM
         '
@@ -640,7 +652,8 @@ Partial Class frmFPhotoM
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents txtImageSelected As System.Windows.Forms.TextBox
+    Friend WithEvents txtMoveFolder As System.Windows.Forms.TextBox
     Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Move As System.Windows.Forms.Button
 
 End Class
