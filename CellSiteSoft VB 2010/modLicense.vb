@@ -2,47 +2,79 @@
 
 Module modLicense
 
-    Public Sub CheckRegistration(ByVal xmlText As [String])
-        '--------START REGISTRATION CHECK to see how many times has the program ran / if less than 15 then EVERYTHING is OK
-        '--------if this run is >= 15 then must register or the program will terminate / call us at 10th run
+    Public Function getMacAddress()
+        Dim nics() As NetworkInterface = _
+            NetworkInterface.GetAllNetworkInterfaces
+        Return nics(0).GetPhysicalAddress.ToString
+    End Function
 
-        'Dim _doc As New XmlDocument
-        'alternately, _doc.LoadXml(xmlText); to load from input
+    ' convert Gregorian Date to Julian Date
+    Public Shared Function DateToJDate(ByVal TheDate As Date) As String
+        Dim TheYear As Integer
+        Dim TheDays As Integer
+        Dim JDate As String
 
-        '_doc.LoadXml("\obj\x86\Debug\FPhotoM.xml")
+        TheYear = Year(TheDate)
+        TheDays = DateDiff("d", DateSerial(TheYear, 1, 0), TheDate)
+        JDate = Format(TheYear, "0000") & Format(TheDays, "000")
 
-        'Dim _elasDate As XmlNodeList = _doc.GetElementsByTagName("elasDate")
-        'Dim _elasRun As XmlNodeList = _doc.GetElementsByTagName("elasRun")
-        'Dim elasDate As Date = _elasDate
+        Return JDate
+    End Function
 
-    End Sub ' END REGISTRATION CHECK
+    ' http://www.nonhostile.com/howto-calculate-md5-hash-string-vb-net.asp
+    ' calculate the MD5 hash of a given string 
+    ' the string is first converted to a byte array
+    Public Function MD5CalcString(ByVal strData As String) As String
 
+        Dim objMD5 As New System.Security.Cryptography.MD5CryptoServiceProvider
+        Dim arrData() As Byte
+        Dim arrHash() As Byte
 
+        ' first convert the string to bytes (using UTF8 encoding for unicode characters)
+        arrData = System.Text.Encoding.UTF8.GetBytes(strData)
 
-    Private Sub WriteXML()
-        Dim writer As New XmlTextWriter("Akire.xml", System.Text.Encoding.UTF8)
-        writer.WriteStartDocument(True)
-        writer.Formatting = Formatting.Indented
-        writer.Indentation = 2
-        writer.WriteStartElement("Table")
-        createNode(System.DateTime.Now, System.DateTime.Now, System.DateTime.Now, writer)
-        writer.WriteEndElement()
-        writer.WriteEndDocument()
-        writer.Close()
-    End Sub
+        ' hash contents of this byte array
+        arrHash = objMD5.ComputeHash(arrData)
 
-    Private Sub createNode(ByVal pID As String, ByVal pName As String, ByVal pPrice As String, ByVal writer As XmlTextWriter)
-        writer.WriteStartElement("TRB Software")
-        writer.WriteStartElement("StartDate")
-        writer.WriteString(pID)
-        writer.WriteEndElement()
-        writer.WriteStartElement("TodayDate")
-        writer.WriteString(pName)
-        writer.WriteEndElement()
-        writer.WriteStartElement("EndDate")
-        writer.WriteString(pPrice)
-        writer.WriteEndElement()
-        writer.WriteEndElement()
-    End Sub
+        ' thanks objects
+        objMD5 = Nothing
+
+        ' return formatted hash
+        Return ByteArrayToString(arrHash)
+
+    End Function
+
+    ' utility function to convert a byte array into a hex string
+    Private Function ByteArrayToString(ByVal arrInput() As Byte) As String
+        Dim strOutput As New System.Text.StringBuilder(arrInput.Length)
+
+        For i As Integer = 0 To arrInput.Length - 1
+            strOutput.Append(arrInput(i).ToString("X2"))
+        Next
+        Return strOutput.ToString().ToLower
+    End Function
+
+    Public Function localLicenseKey(ByVal getMacAddress As String, ByVal DateToJDate As String) As String
+        Dim strSalt As String = "ERIKA"
+        Dim txtjSDate As String
+
+        ' this is so the internal LIC remain static for a duration
+        ' need to enhance against jSDate.xml file deletion/modification
+        ' possible register to Registry or get from TRB licensing web server
+        Dim jSDateFile As StreamReader
+        Try
+            jSDateFile = File.OpenText("jSDate.xml")
+            txtjSDate = jSDateFile.ReadLine()
+            jSDateFile.Close()
+
+        Catch ex As Exception
+            ' jSDate.xml will be available after Help > Product Registration
+            ' MessageBox.Show("jSDate cannot be opened.", "Warning Error")
+        End Try
+
+        Dim strMD5LicenseKey As String = MD5CalcString(getMacAddress & txtjSDate) ' unobfuscate MD5 hash 
+        Dim strSaltedMD5LicenseKey = MD5CalcString(strSalt & strMD5LicenseKey) ' obfuscate MD5 hash w/ salt
+        Return strSaltedMD5LicenseKey
+    End Function
 
 End Module

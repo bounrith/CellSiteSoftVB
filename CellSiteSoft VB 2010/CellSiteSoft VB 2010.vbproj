@@ -116,6 +116,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modLicense.vb" />
+    <Compile Include="modEricsson.vb" />
+    <Compile Include="modTest.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
