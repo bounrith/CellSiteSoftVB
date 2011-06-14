@@ -82,85 +82,10 @@ Public Class frmFPhotoM
 
     End Sub
 
-    Function getMacAddress()
-        Dim nics() As NetworkInterface = _
-            NetworkInterface.GetAllNetworkInterfaces
-        Return nics(0).GetPhysicalAddress.ToString
-    End Function
-
-    ' convert Gregorian Date to Julian Date
-    Public Shared Function DateToJDate(ByVal TheDate As Date) As String
-        Dim TheYear As Integer
-        Dim TheDays As Integer
-        Dim JDate As String
-
-        TheYear = Year(TheDate)
-        TheDays = DateDiff("d", DateSerial(TheYear, 1, 0), TheDate)
-        JDate = Format(TheYear, "0000") & Format(TheDays, "000")
-
-        Return JDate
-    End Function
-
-    ' http://www.nonhostile.com/howto-calculate-md5-hash-string-vb-net.asp
-    ' calculate the MD5 hash of a given string 
-    ' the string is first converted to a byte array
-    Public Function MD5CalcString(ByVal strData As String) As String
-
-        Dim objMD5 As New System.Security.Cryptography.MD5CryptoServiceProvider
-        Dim arrData() As Byte
-        Dim arrHash() As Byte
-
-        ' first convert the string to bytes (using UTF8 encoding for unicode characters)
-        arrData = System.Text.Encoding.UTF8.GetBytes(strData)
-
-        ' hash contents of this byte array
-        arrHash = objMD5.ComputeHash(arrData)
-
-        ' thanks objects
-        objMD5 = Nothing
-
-        ' return formatted hash
-        Return ByteArrayToString(arrHash)
-
-    End Function
-
-    ' utility function to convert a byte array into a hex string
-    Private Function ByteArrayToString(ByVal arrInput() As Byte) As String
-        Dim strOutput As New System.Text.StringBuilder(arrInput.Length)
-
-        For i As Integer = 0 To arrInput.Length - 1
-            strOutput.Append(arrInput(i).ToString("X2"))
-        Next
-        Return strOutput.ToString().ToLower
-    End Function
-
-    Function localLicenseKey(ByVal getMacAddress As String, ByVal DateToJDate As String) As String
-        Dim strSalt As String = "ERIKA"
-        Dim txtjSDate As String
-
-        ' this is so the internal LIC remain static for a duration
-        ' need to enhance against jSDate.xml file deletion/modification
-        ' possible register to Registry or get from TRB licensing web server
-        Dim jSDateFile As StreamReader
-        Try
-            jSDateFile = File.OpenText("jSDate.xml")
-            txtjSDate = jSDateFile.ReadLine()
-            jSDateFile.Close()
-
-        Catch ex As Exception
-            ' jSDate.xml will be available after Help > Product Registration
-            ' MessageBox.Show("jSDate cannot be opened.", "Warning Error")
-        End Try
-
-        Dim strMD5LicenseKey As String = MD5CalcString(getMacAddress & txtjSDate) ' unobfuscate MD5 hash 
-        Dim strSaltedMD5LicenseKey = MD5CalcString(strSalt & strMD5LicenseKey) ' obfuscate MD5 hash w/ salt
-        Return strSaltedMD5LicenseKey
-    End Function
-
 
     Dim filenumber As Integer 'a variable delcare to get in the value of freefile function / automatically assigns the value which represents the file
     Dim times_used As Integer = 1 'initializing times_used
-    Dim max_limit As Integer = 20 'set the maximum number of times
+    Dim max_limit As Integer = 5 'set the maximum number of times
 
     'http://vbdotnetforum.com/index.php?/topic/31-make-trial-version-of-software/
     Private Sub demosoft()
@@ -168,7 +93,7 @@ Public Class frmFPhotoM
         If IO.File.Exists("DemoMe.xml") Then 'Checking if file exists..
             FileOpen(filenumber, "DemoMe.xml", OpenMode.Random, OpenAccess.ReadWrite) 'If exists,were opening it in readwrite mode.
             FileGet(filenumber, times_used) 'Were reading from the file the value thats stored..ie the number of times he has used
-            If times_used >= 14 Then
+            If times_used >= 3 Then
                 MessageBox.Show("You can only run this software " & (max_limit - times_used) & " more times.", "Licensing Warning")
             End If
 
