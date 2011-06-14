@@ -1,6 +1,6 @@
 ﻿Imports System.Xml
 
-Module Module1
+Module modLicense
 
     Public Sub CheckRegistration(ByVal xmlText As [String])
         '--------START REGISTRATION CHECK to see how many times has the program ran / if less than 15 then EVERYTHING is OK
