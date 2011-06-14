@@ -1,4 +1,6 @@
-﻿Imports System.Xml
+﻿Imports System.IO
+Imports System.Net.NetworkInformation
+
 
 Module modLicense
 
@@ -9,7 +11,7 @@ Module modLicense
     End Function
 
     ' convert Gregorian Date to Julian Date
-    Public Shared Function DateToJDate(ByVal TheDate As Date) As String
+    Public Function DateToJDate(ByVal TheDate As Date) As String ' why can't this be shared function
         Dim TheYear As Integer
         Dim TheDays As Integer
         Dim JDate As String
