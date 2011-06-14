@@ -103,10 +103,10 @@
     <Compile Include="frmAboutBox.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CellSiteSoft VB 2010.Designer.vb">
-      <DependentUpon>CellSiteSoft VB 2010.vb</DependentUpon>
+    <Compile Include="frmFPhotoM.Designer.vb">
+      <DependentUpon>frmFPhotoM.vb</DependentUpon>
     </Compile>
-    <Compile Include="CellSiteSoft VB 2010.vb">
+    <Compile Include="frmFPhotoM.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCustomerKey.designer.vb">
@@ -115,7 +115,7 @@
     <Compile Include="frmCustomerKey.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module1.vb" />
+    <Compile Include="modLicense.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -136,8 +136,8 @@
     <EmbeddedResource Include="frmAboutBox.resx">
       <DependentUpon>frmAboutBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CellSiteSoft VB 2010.resx">
-      <DependentUpon>CellSiteSoft VB 2010.vb</DependentUpon>
+    <EmbeddedResource Include="frmFPhotoM.resx">
+      <DependentUpon>frmFPhotoM.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomerKey.resx">
       <DependentUpon>frmCustomerKey.vb</DependentUpon>
