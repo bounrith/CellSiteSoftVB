@@ -3,7 +3,7 @@ Imports System.Net.NetworkInformation
 
 ' Internal License Module
 ' ASSIGN TO: Bounrith Ly
-' TO DO: turn this into a class TRBInternalClass and look to do online registration
+' TODO: turn this into a class TRBInternalClass and look to do online registration
 
 Module modLicense
 
