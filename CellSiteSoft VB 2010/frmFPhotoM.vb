@@ -1,6 +1,5 @@
 ﻿Imports System
 Imports System.IO
-Imports System.Net.NetworkInformation
 Imports System.Xml
 Imports System.Text
 Imports Excel = Microsoft.Office.Interop.Excel
@@ -55,7 +54,6 @@ Public Class frmFPhotoM
         Else
             ' DEMO VERSION
             demosoft()
-            'regcheck()
         End If
 
         user_folder_desktop = Environment.GetEnvironmentVariable("UserProfile") & "\Desktop"
@@ -81,39 +79,6 @@ Public Class frmFPhotoM
         'SetEnabled()
 
     End Sub
-
-
-    Dim filenumber As Integer 'a variable delcare to get in the value of freefile function / automatically assigns the value which represents the file
-    Dim times_used As Integer = 1 'initializing times_used
-    Dim max_limit As Integer = 5 'set the maximum number of times
-
-    'http://vbdotnetforum.com/index.php?/topic/31-make-trial-version-of-software/
-    Private Sub demosoft()
-        filenumber = FreeFile() 'We assign the number which represents which file to open
-        If IO.File.Exists("DemoMe.xml") Then 'Checking if file exists..
-            FileOpen(filenumber, "DemoMe.xml", OpenMode.Random, OpenAccess.ReadWrite) 'If exists,were opening it in readwrite mode.
-            FileGet(filenumber, times_used) 'Were reading from the file the value thats stored..ie the number of times he has used
-            If times_used >= 3 Then
-                MessageBox.Show("You can only run this software " & (max_limit - times_used) & " more times.", "Licensing Warning")
-            End If
-
-            FileClose(filenumber)
-            If times_used >= max_limit Then 'Were checking if the user has used the software more than the limit specified
-                MessageBox.Show("Sorry, Your trial period is over!! Please purchase this software.", "Licensing Error") 'oops,if it has exceeded,then,he cant use it  
-                Me.Close()
-            End If
-            times_used = times_used + 1 'if he has used it once before,lets make it 2 now since this is the 2nd time
-            FileOpen(filenumber, "DemoMe.xml", OpenMode.Random, OpenAccess.ReadWrite) 'storing the value back here 
-            FilePut(filenumber, times_used)
-            FileClose(filenumber)
-        Else
-            'This part is if the user is using the software for the 1st time.The file has to be created
-            FileOpen(filenumber, "DemoMe.xml", OpenMode.Random, OpenAccess.ReadWrite)
-            FilePut(filenumber, times_used) 'ok,now he has opened and used once,so,lets write it in here.
-            FileClose(filenumber)
-        End If
-    End Sub
-
 
     Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Drives.SelectedIndexChanged
         Dim split_drive_letter As String()
@@ -266,7 +231,6 @@ Public Class frmFPhotoM
     Private Sub CheckListFile_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckListFile.TextChanged
 
     End Sub
-
 
     Public Sub CheckListFileSelect()
 
