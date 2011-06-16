@@ -54,7 +54,6 @@ Partial Class frmFPhotoM
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UndoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RedoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.CutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -341,7 +340,7 @@ Partial Class frmFPhotoM
         '
         'EditToolStripMenuItem1
         '
-        Me.EditToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UndoToolStripMenuItem, Me.RedoToolStripMenuItem, Me.toolStripSeparator3, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.toolStripSeparator4, Me.SelectAllToolStripMenuItem})
+        Me.EditToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UndoToolStripMenuItem, Me.toolStripSeparator3, Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.toolStripSeparator4, Me.SelectAllToolStripMenuItem})
         Me.EditToolStripMenuItem1.Name = "EditToolStripMenuItem1"
         Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
         Me.EditToolStripMenuItem1.Text = "&Edit"
@@ -352,13 +351,6 @@ Partial Class frmFPhotoM
         Me.UndoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
         Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.UndoToolStripMenuItem.Text = "&Undo"
-        '
-        'RedoToolStripMenuItem
-        '
-        Me.RedoToolStripMenuItem.Name = "RedoToolStripMenuItem"
-        Me.RedoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.RedoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.RedoToolStripMenuItem.Text = "&Redo"
         '
         'toolStripSeparator3
         '
@@ -509,6 +501,7 @@ Partial Class frmFPhotoM
         '
         'txtDestinationFolder
         '
+        Me.txtDestinationFolder.BackColor = System.Drawing.SystemColors.Window
         Me.txtDestinationFolder.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDestinationFolder.Location = New System.Drawing.Point(19, 52)
         Me.txtDestinationFolder.Name = "txtDestinationFolder"
@@ -628,7 +621,6 @@ Partial Class frmFPhotoM
     Friend WithEvents ExitToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UndoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RedoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents toolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents CutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CopyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

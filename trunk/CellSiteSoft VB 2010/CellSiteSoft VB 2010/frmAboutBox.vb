@@ -1,7 +1,30 @@
 ﻿Public NotInheritable Class frmAboutBox
 
+    Private Sub frmAboutBox_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+
+        If e.KeyCode = Keys.D1 Then
+            Timer1.Enabled = True
+        End If
+        If e.KeyCode = Keys.D2 And Timer1.Enabled = True Then
+            Timer2.Enabled = True
+        End If
+        If e.KeyCode = Keys.D3 And Timer1.Enabled = True And Timer2.Enabled = True Then
+            Timer3.Enabled = True
+        End If
+        If e.KeyCode = Keys.D4 And Timer1.Enabled = True And Timer2.Enabled = True And Timer3.Enabled = True Then
+            'Put what you want to be an easter egg here.
+            MessageBox.Show("Tino Ry Bounrith", "Class of 1993")
+            Timer1.Enabled = False
+            Timer2.Enabled = False
+            Timer3.Enabled = False
+        End If
+
+    End Sub
+
     Private Sub AboutBox1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Set the title of the form.
+        KeyPreview = True
+
         Dim ApplicationTitle As String
         If My.Application.Info.Title <> "" Then
             ApplicationTitle = My.Application.Info.Title

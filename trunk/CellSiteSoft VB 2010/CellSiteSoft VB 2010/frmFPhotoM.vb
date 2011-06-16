@@ -447,7 +447,9 @@ Public Class frmFPhotoM
         lstFileNames.Items.Add("017_" & txtSiteID.Text & "_Alpha_RET_coax_ground")
         lstFileNames.Items.Add("018_" & txtSiteID.Text & "_Alpha_RET_ground lead")
         lstFileNames.Items.Add("019_" & txtSiteID.Text & "_Alpha_top_coax_grounds")
+
     End Sub
+
     Private Sub Populate_Beta()
         lstFileNames.Items.Clear()
         lstFileNames.Items.Add("020_" & txtSiteID.Text & "_Beta_tower")
@@ -469,7 +471,9 @@ Public Class frmFPhotoM
         lstFileNames.Items.Add("036_" & txtSiteID.Text & "_Beta_RET_coax_ground")
         lstFileNames.Items.Add("037_" & txtSiteID.Text & "_Beta_RET_ground lead")
         lstFileNames.Items.Add("038_" & txtSiteID.Text & "_Beta_top_coax_grounds")
+
     End Sub
+
     Private Sub Populate_Charlie()
         lstFileNames.Items.Clear()
         lstFileNames.Items.Add("039_" & txtSiteID.Text & "_Charlie_tower")
@@ -612,6 +616,7 @@ Public Class frmFPhotoM
         lstFileNames.Items.Add("122_" & txtSiteID.Text & "_CCU_ground_bar")
 
     End Sub
+
     Private Sub Populate_Access()
         lstFileNames.Items.Clear()
         lstFileNames.Items.Add("123_" & txtSiteID.Text & "_Access_to_site")
@@ -619,6 +624,7 @@ Public Class frmFPhotoM
         lstFileNames.Items.Add("125_" & txtSiteID.Text & "_Door_Access")
 
     End Sub
+
     Private Sub Populate_Signage()
         lstFileNames.Items.Clear()
         lstFileNames.Items.Add("126_" & txtSiteID.Text & "_Site_Sign")
@@ -626,6 +632,7 @@ Public Class frmFPhotoM
         lstFileNames.Items.Add("128_" & txtSiteID.Text & "_ FCC_Sign")
 
     End Sub
+
     Private Sub Populate_EricssonQA()
         lstFileNames.Items.Clear()
         lstFileNames.Items.Add("129_" & txtSiteID.Text & "_QC_Checklist")
@@ -641,6 +648,7 @@ Public Class frmFPhotoM
         lstFileNames.Items.Add("139_" & txtSiteID.Text & "_Cabinet_Overview")
 
     End Sub
+
     Private Sub ImageList_Load1()
         Dim i, j, k As Integer
         Dim pname As String
@@ -691,6 +699,7 @@ Public Class frmFPhotoM
         End If
         'pname = Nothing
     End Sub
+
     Private Sub ImageList_Load2()
         Dim i, j, k As Integer
         Dim pname As String
@@ -741,6 +750,7 @@ Public Class frmFPhotoM
         End If
         'pname = Nothing
     End Sub
+
     Private Sub ThumbnailView(ByVal ListView As Integer)
         If ListView = 1 Then
             thread1.Abort()
@@ -754,7 +764,6 @@ Public Class frmFPhotoM
             ListView2.Items.Clear()
             thread2 = New System.Threading.Thread(AddressOf ImageList_Load2)
             thread2.Start()
-
         End If
 
     End Sub
@@ -809,6 +818,22 @@ Public Class frmFPhotoM
         OpenFileDialog2.ShowDialog()
     End Sub
 
+
+    Private Sub Move_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Move.Click
+        Try
+            FolderBrowserDialog1.SelectedPath = user_folder_desktop
+            FolderBrowserDialog1.ShowDialog()
+            txtMoveFolder.Text = FolderBrowserDialog1.SelectedPath.ToString
+        Catch ex As Exception
+            MessageBox.Show("Can not select this folder")
+            txtMoveFolder.Text = Nothing
+        End Try
+    End Sub
+
+    ' BEGIN MENU ITEM STRIP CONTROL
+
+
+
     Private Sub AboutToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem1.Click
         Dim AboutBoxForm As New frmAboutBox
         AboutBoxForm.Show()
@@ -839,16 +864,57 @@ Public Class frmFPhotoM
         CheckListFileSelect()
     End Sub
 
-    Private Sub Move_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Move.Click
-        Try
-            FolderBrowserDialog1.SelectedPath = user_folder_desktop
-            FolderBrowserDialog1.ShowDialog()
-            txtMoveFolder.Text = FolderBrowserDialog1.SelectedPath.ToString
-        Catch ex As Exception
-            MessageBox.Show("Can not select this folder")
-            txtMoveFolder.Text = Nothing
-        End Try
+    Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click
+
+        If TypeOf Me.ActiveControl Is TextBoxBase Then
+            DirectCast(Me.ActiveControl, TextBoxBase).Cut()
+        ElseIf TypeOf Me.ActiveControl Is ComboBox Then
+            Dim cmbo As ComboBox = DirectCast(Me.ActiveControl, ComboBox)
+            Clipboard.SetText(cmbo.SelectedText())
+            cmbo.SelectedText = ""
+        End If
     End Sub
+
+    Private Sub PasteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PasteToolStripMenuItem.Click
+
+        If TypeOf Me.ActiveControl Is TextBoxBase Then
+            DirectCast(Me.ActiveControl, TextBoxBase).Paste()
+        ElseIf TypeOf Me.ActiveControl Is ComboBox Then
+            DirectCast(Me.ActiveControl, ComboBox).SelectedText = Clipboard.GetText
+        End If
+    End Sub
+
+    Private Sub CopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopyToolStripMenuItem.Click
+
+        If TypeOf Me.ActiveControl Is TextBoxBase Then
+            DirectCast(Me.ActiveControl, TextBoxBase).Copy()
+        ElseIf TypeOf Me.ActiveControl Is ComboBox Then
+            Clipboard.SetText(DirectCast(Me.ActiveControl, ComboBox).SelectedText())
+        End If
+    End Sub
+
+    Private Sub UndoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UndoToolStripMenuItem.Click
+
+        If TypeOf Me.ActiveControl Is TextBoxBase Then
+            Dim txtbox As TextBoxBase = DirectCast(Me.ActiveControl, TextBoxBase)
+            txtbox.Undo()
+            txtbox.ClearUndo()
+        ElseIf TypeOf Me.ActiveControl Is ComboBox Then
+            SendKeys.Send("^Z")
+        End If
+    End Sub
+
+    Private Sub SelectAllToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SelectAllToolStripMenuItem.Click
+
+        If TypeOf Me.ActiveControl Is TextBoxBase Then
+            DirectCast(Me.ActiveControl, TextBoxBase).SelectAll()
+        ElseIf TypeOf Me.ActiveControl Is ComboBox Then
+            DirectCast(Me.ActiveControl, ComboBox).SelectAll()
+        End If
+    End Sub
+    ' END MENU ITEM STRIP CONTROL
+
+
 End Class
 
 

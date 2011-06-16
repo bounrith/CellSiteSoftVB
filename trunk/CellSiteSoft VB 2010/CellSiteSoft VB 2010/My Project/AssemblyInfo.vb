@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("FPhotoM")> 
 <Assembly: AssemblyDescription("Field Photo Management")> 
-<Assembly: AssemblyCompany("TRB Software, Inc.")> 
+<Assembly: AssemblyCompany("TRB Software, LLC")> 
 <Assembly: AssemblyProduct("Field Photo Management")> 
-<Assembly: AssemblyCopyright("Copyright © TRB Software, Inc. 2011")> 
+<Assembly: AssemblyCopyright("Copyright © TRB Software, LLC 2011")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
