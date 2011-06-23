@@ -5,6 +5,14 @@ Imports System.Net.NetworkInformation
 
 Public Class frmCustomerKey
 
+    Private Sub CreatejSDate()
+        Dim JSDateFile As StreamWriter
+
+        JSDateFile = File.CreateText("jSDate.xml")
+        JSDateFile.WriteLine(DateToJDate(System.DateTime.Now()))
+        JSDateFile.Close()
+    End Sub
+
     Function DateToJDate(ByVal TheDate As Date) As String
         Dim TheYear As Integer
         Dim TheDays As Integer
@@ -26,38 +34,44 @@ Public Class frmCustomerKey
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim serialFile As StreamWriter
-        Dim JSDateFile As StreamWriter
-        JSDateFile = File.CreateText("jSDate.xml")
-        JSDateFile.WriteLine(DateToJDate(System.DateTime.Now()))
-        JSDateFile.Close()
+
+
+        If File.Exists("jSDate.xml") Then
+            ' MessageBox.Show("jSDate.xml existed.")
+        Else
+            CreatejSDate()
+        End If
 
         serialFile = File.CreateText("CustomerKey.txt")
 
         ' display mac address in 4s to user
-        Try
-            If getMacAddress() <> "" Then
+            Try
+                If getMacAddress() <> "" Then
 
-                serialFile.WriteLine(getMacAddress())
+                    serialFile.WriteLine(getMacAddress())
 
-                Dim s As String = getMacAddress()
-                Dim r As String = String.Empty
-                For i As Integer = 0 To s.Length - 1 Step 4
-                    r &= s.Substring(i, 4)
-                    If i < (s.Length - 4) Then r &= "-"
-                Next
-                TextBox1.Text = String.Join("-", r)
+                    Dim s As String = getMacAddress()
+                    Dim r As String = String.Empty
+                    For i As Integer = 0 To s.Length - 1 Step 4
+                        r &= s.Substring(i, 4)
+                        If i < (s.Length - 4) Then r &= "-"
+                    Next
+                    TextBox1.Text = String.Join("-", r)
 
-            End If
+                End If
 
-            serialFile.Close()
+                serialFile.Close()
 
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Me.Close()
     End Sub
 
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        CreatejSDate()
+    End Sub
 End Class
