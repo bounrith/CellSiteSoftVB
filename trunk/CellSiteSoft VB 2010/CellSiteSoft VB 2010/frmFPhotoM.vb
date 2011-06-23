@@ -818,22 +818,24 @@ Public Class frmFPhotoM
         OpenFileDialog2.ShowDialog()
     End Sub
 
+    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
 
-    Private Sub Move_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Move.Click
-        Try
-            FolderBrowserDialog1.SelectedPath = user_folder_desktop
-            FolderBrowserDialog1.ShowDialog()
-            txtMoveFolder.Text = FolderBrowserDialog1.SelectedPath.ToString
-        Catch ex As Exception
-            MessageBox.Show("Can not select this folder")
+        If CheckBox1.CheckState = 1 Then
+            Try
+                FolderBrowserDialog1.SelectedPath = user_folder_desktop
+                FolderBrowserDialog1.ShowDialog()
+                txtMoveFolder.Text = FolderBrowserDialog1.SelectedPath.ToString
+            Catch ex As Exception
+                MessageBox.Show("Can not select this folder")
+                txtMoveFolder.Text = Nothing
+            End Try
+        ElseIf CheckBox1.CheckState = 0 Then
             txtMoveFolder.Text = Nothing
-        End Try
+        End If
+
     End Sub
 
     ' BEGIN MENU ITEM STRIP CONTROL
-
-
-
     Private Sub AboutToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem1.Click
         Dim AboutBoxForm As New frmAboutBox
         AboutBoxForm.Show()
@@ -913,7 +915,6 @@ Public Class frmFPhotoM
         End If
     End Sub
     ' END MENU ITEM STRIP CONTROL
-
 
 End Class
 

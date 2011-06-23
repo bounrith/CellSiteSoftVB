@@ -40,7 +40,6 @@ Partial Class frmFPhotoM
         Me.ListView1 = New System.Windows.Forms.ListView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Move = New System.Windows.Forms.Button()
         Me.txtMoveFolder = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
@@ -79,6 +78,7 @@ Partial Class frmFPhotoM
         Me.COPY = New System.Windows.Forms.Button()
         Me.ListView2 = New System.Windows.Forms.ListView()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -99,7 +99,7 @@ Partial Class frmFPhotoM
         Me.ComboBox_Drives.FormattingEnabled = True
         Me.ComboBox_Drives.Location = New System.Drawing.Point(18, 17)
         Me.ComboBox_Drives.Name = "ComboBox_Drives"
-        Me.ComboBox_Drives.Size = New System.Drawing.Size(219, 24)
+        Me.ComboBox_Drives.Size = New System.Drawing.Size(207, 24)
         Me.ComboBox_Drives.TabIndex = 1
         '
         'imageList1
@@ -233,7 +233,7 @@ Partial Class frmFPhotoM
         Me.GroupBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox2.Controls.Add(Me.Move)
+        Me.GroupBox2.Controls.Add(Me.CheckBox1)
         Me.GroupBox2.Controls.Add(Me.txtMoveFolder)
         Me.GroupBox2.Controls.Add(Me.ListView1)
         Me.GroupBox2.Controls.Add(Me.ComboBox_Drives)
@@ -244,21 +244,11 @@ Partial Class frmFPhotoM
         Me.GroupBox2.TabIndex = 27
         Me.GroupBox2.TabStop = False
         '
-        'Move
-        '
-        Me.Move.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Move.Location = New System.Drawing.Point(242, 16)
-        Me.Move.Name = "Move"
-        Me.Move.Size = New System.Drawing.Size(69, 23)
-        Me.Move.TabIndex = 35
-        Me.Move.Text = "Move To"
-        Me.Move.UseVisualStyleBackColor = True
-        '
         'txtMoveFolder
         '
-        Me.txtMoveFolder.Location = New System.Drawing.Point(317, 19)
+        Me.txtMoveFolder.Location = New System.Drawing.Point(351, 19)
         Me.txtMoveFolder.Name = "txtMoveFolder"
-        Me.txtMoveFolder.Size = New System.Drawing.Size(160, 20)
+        Me.txtMoveFolder.Size = New System.Drawing.Size(126, 20)
         Me.txtMoveFolder.TabIndex = 25
         Me.txtMoveFolder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -308,13 +298,13 @@ Partial Class frmFPhotoM
         Me.OpenToolStripMenuItem1.Name = "OpenToolStripMenuItem1"
         Me.OpenToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.OpenToolStripMenuItem1.ShowShortcutKeys = False
-        Me.OpenToolStripMenuItem1.Size = New System.Drawing.Size(190, 22)
+        Me.OpenToolStripMenuItem1.Size = New System.Drawing.Size(179, 22)
         Me.OpenToolStripMenuItem1.Text = "Open Check &List"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(190, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(179, 22)
         Me.ToolStripMenuItem3.Text = "Select Copy To Folder"
         '
         'SaveToolStripMenuItem
@@ -324,18 +314,18 @@ Partial Class frmFPhotoM
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.SaveToolStripMenuItem.ShowShortcutKeys = False
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.SaveToolStripMenuItem.Text = "C&opy"
         '
         'toolStripSeparator2
         '
         Me.toolStripSeparator2.Name = "toolStripSeparator2"
-        Me.toolStripSeparator2.Size = New System.Drawing.Size(187, 6)
+        Me.toolStripSeparator2.Size = New System.Drawing.Size(176, 6)
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(190, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(179, 22)
         Me.ExitToolStripMenuItem1.Text = "E&xit"
         '
         'EditToolStripMenuItem1
@@ -349,13 +339,13 @@ Partial Class frmFPhotoM
         '
         Me.UndoToolStripMenuItem.Name = "UndoToolStripMenuItem"
         Me.UndoToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UndoToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.UndoToolStripMenuItem.Text = "&Undo"
         '
         'toolStripSeparator3
         '
         Me.toolStripSeparator3.Name = "toolStripSeparator3"
-        Me.toolStripSeparator3.Size = New System.Drawing.Size(149, 6)
+        Me.toolStripSeparator3.Size = New System.Drawing.Size(136, 6)
         '
         'CutToolStripMenuItem
         '
@@ -363,7 +353,7 @@ Partial Class frmFPhotoM
         Me.CutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
         Me.CutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.CutToolStripMenuItem.Text = "Cu&t"
         '
         'CopyToolStripMenuItem
@@ -372,7 +362,7 @@ Partial Class frmFPhotoM
         Me.CopyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
         Me.CopyToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.CopyToolStripMenuItem.Text = "&Copy"
         '
         'PasteToolStripMenuItem
@@ -381,18 +371,18 @@ Partial Class frmFPhotoM
         Me.PasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
         Me.PasteToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.PasteToolStripMenuItem.Text = "&Paste"
         '
         'toolStripSeparator4
         '
         Me.toolStripSeparator4.Name = "toolStripSeparator4"
-        Me.toolStripSeparator4.Size = New System.Drawing.Size(149, 6)
+        Me.toolStripSeparator4.Size = New System.Drawing.Size(136, 6)
         '
         'SelectAllToolStripMenuItem
         '
         Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.SelectAllToolStripMenuItem.Text = "Select &All"
         '
         'ToolsToolStripMenuItem
@@ -405,13 +395,13 @@ Partial Class frmFPhotoM
         'CustomizeToolStripMenuItem
         '
         Me.CustomizeToolStripMenuItem.Name = "CustomizeToolStripMenuItem"
-        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.CustomizeToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
         Me.CustomizeToolStripMenuItem.Text = "&Customize"
         '
         'OptionsToolStripMenuItem
         '
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
         Me.OptionsToolStripMenuItem.Text = "&Options"
         '
         'HelpToolStripMenuItem1
@@ -424,42 +414,42 @@ Partial Class frmFPhotoM
         'ContentsToolStripMenuItem
         '
         Me.ContentsToolStripMenuItem.Name = "ContentsToolStripMenuItem"
-        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.ContentsToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.ContentsToolStripMenuItem.Text = "&Contents"
         '
         'IndexToolStripMenuItem
         '
         Me.IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
-        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.IndexToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.IndexToolStripMenuItem.Text = "&Index"
         '
         'SearchToolStripMenuItem
         '
         Me.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem"
-        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.SearchToolStripMenuItem.Text = "&Search"
         '
         'toolStripSeparator5
         '
         Me.toolStripSeparator5.Name = "toolStripSeparator5"
-        Me.toolStripSeparator5.Size = New System.Drawing.Size(162, 6)
+        Me.toolStripSeparator5.Size = New System.Drawing.Size(151, 6)
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(165, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
         Me.ToolStripMenuItem1.Text = "Register Product"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(165, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(154, 22)
         Me.ToolStripMenuItem2.Text = "Get Support"
         '
         'AboutToolStripMenuItem1
         '
         Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(165, 22)
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(154, 22)
         Me.AboutToolStripMenuItem1.Text = "&About..."
         '
         'Label1
@@ -555,6 +545,16 @@ Partial Class frmFPhotoM
         Me.GroupBox3.TabIndex = 28
         Me.GroupBox3.TabStop = False
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(241, 21)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(104, 17)
+        Me.CheckBox1.TabIndex = 35
+        Me.CheckBox1.Text = "Move after Copy"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'frmFPhotoM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -646,6 +646,6 @@ Partial Class frmFPhotoM
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents txtMoveFolder As System.Windows.Forms.TextBox
     Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Move As System.Windows.Forms.Button
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 
 End Class
