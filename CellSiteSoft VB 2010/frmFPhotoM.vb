@@ -68,7 +68,7 @@ Public Class frmFPhotoM
         thread2 = New System.Threading.Thread(AddressOf ImageList_Load2)
         Control.CheckForIllegalCrossThreadCalls = False
 
-        '---**To Determin the File Dialog is nothing or has value**-------
+        '---**To Determine the File Dialog is nothing or has value**-------
         template_file_selected = False
         OpenFileDialog1.FileName = Nothing
         '---**---------------------------------------------------**-------
@@ -171,9 +171,12 @@ Public Class frmFPhotoM
             clean_path = DirectoryTreeView.SelectedNode.FullPath.ToString
         End If
 
-        'FileListView.Clear()
-        AllFiles = Directory.GetFiles(clean_path, "*.*", SearchOption.TopDirectoryOnly)
-        ThumbnailView(1)
+        Try
+            AllFiles = Directory.GetFiles(clean_path, "*.*", SearchOption.TopDirectoryOnly)
+            ThumbnailView(1)
+        Catch ex As Exception
+            MsgBox("Can not access folder." & vbLf & "Please select a different folder.")
+        End Try
 
 
     End Sub
