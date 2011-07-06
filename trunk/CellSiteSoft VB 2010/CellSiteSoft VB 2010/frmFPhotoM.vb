@@ -288,20 +288,12 @@ Public Class frmFPhotoM
     End Sub
 
     Public Sub SelectDestinationFolder()
-        'Dim split_file2 As String()
-        'Dim no_path_index As Integer
         Try
             FolderBrowserDialog1.SelectedPath = user_folder_desktop
             FolderBrowserDialog1.ShowDialog()
             txtDestinationFolder.Text = FolderBrowserDialog1.SelectedPath.ToString
             AllFiles2 = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
             ThumbnailView(2)
-            'lstFilesList2.Items.Clear()
-            'For Each File In AllFiles2
-            'split_file2 = Split(File.ToString, "\")
-            'no_path_index = UBound(split_file2)
-            'lstFilesList2.Items.Add(split_file2(no_path_index)) 'Ommit the path and Add file name only
-            'Next
         Catch ex As Exception
             MessageBox.Show("Can not select this folder")
             txtDestinationFolder.Text = Nothing
@@ -315,9 +307,6 @@ Public Class frmFPhotoM
     Public Sub SuperCOPY()
         Dim new_name_no_white_space As String
         Dim destionation_path_and_file As String
-        'Dim refresh_files As String()
-        'Dim split_refresh As String()
-        'Dim strip_path_index As Integer
         Dim total_row As Integer
         Dim data_from_excel As String(,) 'two dimensional array
         Dim check_list_file_name As String
@@ -336,25 +325,29 @@ Public Class frmFPhotoM
 
         destionation_path_and_file = txtDestinationFolder.Text & "\" & new_name_no_white_space & ".jpg"
 
-        FileCopy(image_full_path, destionation_path_and_file)
+        '---------------* Check to see if file exist *-------------
+        If My.Computer.FileSystem.FileExists(image_full_path) Then
+            Try
+                FileCopy(image_full_path, destionation_path_and_file)
+            Catch ex As Exception
+                '---------* Incase user clicks copy multiple times and the previous copy is not done *----------
+                Threading.Thread.Sleep(5000) ' Wait for 5 seconds before trying to copy again
+                Return
+            End Try
+        Else
+            MsgBox("Please select an IMAGE to copy")
+            Return
+        End If
 
         If (txtMoveFolder.Text <> Nothing) Then
             My.Computer.FileSystem.MoveFile(image_full_path, move_full_path)
             AllFiles = Directory.GetFiles(clean_path, "*.*", SearchOption.TopDirectoryOnly)
-            ThumbnailView(1) ' refresh the image list
+            ThumbnailView(1) ' refresh the image list 1
         End If
 
         check_list_file_name = CheckListFile.Text
-        'refresh_files = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
         AllFiles2 = Directory.GetFiles(txtDestinationFolder.Text, "*.*", SearchOption.TopDirectoryOnly)
-        ThumbnailView(2)
-        'lstFilesList2.Items.Clear()
-
-        'For Each refresh_file In refresh_files
-        'split_refresh = Split(refresh_file.ToString, "\")
-        'strip_path_index = UBound(split_refresh)
-        'lstFilesList2.Items.Add(split_refresh(strip_path_index)) 'Omit the path and Add file name only
-        'Next
+        ThumbnailView(2) 'Refresh image list 2
 
         If check_list_file_name = Nothing Then
             Return
