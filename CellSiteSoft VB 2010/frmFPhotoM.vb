@@ -32,9 +32,9 @@ Public Class frmFPhotoM
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        ' need to center all controls
         'Me.Left = (Screen.PrimaryScreen.WorkingArea.Width - Me.Width) / 2
         'Me.Top = (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) / 2
-
 
         Dim strSaltedMD5LicenseKey As String
         Dim LicenseKeyFile As StreamReader
@@ -55,10 +55,9 @@ Public Class frmFPhotoM
 
         ' test extLIC input against internal TRB Protection Algorithm
         If strSerialInput = strSaltedMD5LicenseKey Then
-            ' FULL VERSION
+            ' FULL VERSION reading LicenseKey.txt (need to work on yearly expiration)
         Else
-            ' DEMO VERSION
-            demosoft()
+            demosoft() ' DEMO VERSION see modDemo
         End If
 
         user_folder_desktop = Environment.GetEnvironmentVariable("UserProfile") & "\Desktop"
@@ -76,13 +75,12 @@ Public Class frmFPhotoM
         '---**To Determine the File Dialog is nothing or has value**-------
         template_file_selected = False
         OpenFileDialog1.FileName = Nothing
-        '---**---------------------------------------------------**-------
+        '---**----------------------------------------------------**-------
 
         image_full_path = Nothing
         CheckListFile.Text = Nothing
         txtDestinationFolder.Text = Nothing
         'SetEnabled()
-
     End Sub
 
     Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Drives.SelectedIndexChanged
@@ -182,8 +180,6 @@ Public Class frmFPhotoM
         Catch ex As Exception
             MsgBox("Can not access folder." & vbLf & "Please select a different folder.")
         End Try
-
-
     End Sub
 
     Private Sub cmdCategory_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCategory.SelectedIndexChanged
@@ -216,6 +212,7 @@ Public Class frmFPhotoM
                 Populate_EricssonQA()
         End Select
     End Sub
+
     Private Sub Load_Category()
         cmdCategory.Items.Add("ALPHA SECTOR")
         cmdCategory.Items.Add("BETA SECTOR")
@@ -230,14 +227,6 @@ Public Class frmFPhotoM
         cmdCategory.Items.Add("ACCESS")
         cmdCategory.Items.Add("SIGNAGE")
         cmdCategory.Items.Add("Ericsson QA")
-    End Sub
-
-    Private Sub lstFileNames_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstFileNames.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub CheckListFile_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckListFile.TextChanged
-
     End Sub
 
     Public Sub CheckListFileSelect()
@@ -263,7 +252,7 @@ Public Class frmFPhotoM
                 CheckListFile.Text = OpenFileDialog1.FileName
                 template_file_selected = True
 
-                '-------*** Change Checklist file, close EXCEL, Kill EXCEL Process ***-----------
+                '-------*** Change Checklist file, close EXCEL, Kill EXCEL Process ***--------
                 If (open_excel = True) Then
                     'MsgBox("Closing Excel File")
                     Excel_Workbook.Close()
@@ -321,7 +310,8 @@ Public Class frmFPhotoM
         Dim column1_data As String
         Dim column4_data As String
 
-        If image_full_path = Nothing Or lstFileNames.SelectedItem = Nothing Or txtDestinationFolder.Text = Nothing Then
+        ' replace '=' with 'Is'
+        If image_full_path Is Nothing Or lstFileNames.SelectedItem Is Nothing Or txtDestinationFolder.Text Is Nothing Then
             Return
         End If
         new_name_no_white_space = Replace(lstFileNames.SelectedItem.ToString, "/", "_Or_") ' Replace "/" with "_Or_"
@@ -417,15 +407,6 @@ Public Class frmFPhotoM
     Private Sub COPY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COPY.Click
         SuperCOPY()
     End Sub
-
-    Private Sub txtDestinationFolder_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDestinationFolder.TextChanged
-
-    End Sub
-
-    Private Sub txtSiteName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSiteName.TextChanged
-
-    End Sub
-
 
     Private Sub Populate_Alpha()
         lstFileNames.Items.Clear()
@@ -820,7 +801,6 @@ Public Class frmFPhotoM
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
-
         If CheckBox1.CheckState = 1 Then
             Try
                 FolderBrowserDialog1.SelectedPath = user_folder_desktop
@@ -833,7 +813,6 @@ Public Class frmFPhotoM
         ElseIf CheckBox1.CheckState = 0 Then
             txtMoveFolder.Text = Nothing
         End If
-
     End Sub
 
     ' BEGIN MENU ITEM STRIP CONTROL
