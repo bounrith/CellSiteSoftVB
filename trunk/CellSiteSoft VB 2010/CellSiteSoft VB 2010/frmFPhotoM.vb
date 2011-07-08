@@ -31,6 +31,11 @@ Public Class frmFPhotoM
     Dim clean_path As String
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        'Me.Left = (Screen.PrimaryScreen.WorkingArea.Width - Me.Width) / 2
+        'Me.Top = (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) / 2
+
+
         Dim strSaltedMD5LicenseKey As String
         Dim LicenseKeyFile As StreamReader
 
