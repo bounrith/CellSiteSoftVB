@@ -73,5 +73,6 @@ Public Class frmCustomerKey
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         CreatejSDate()
+        MessageBox.Show("Unable to connect to Online Registration Server. Please call 562.858.0830. Thank you.", "Connection Error")
     End Sub
 End Class
