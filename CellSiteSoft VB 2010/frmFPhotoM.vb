@@ -32,8 +32,9 @@ Public Class frmFPhotoM
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Panel1.Left = (Screen.PrimaryScreen.WorkingArea.Width - Panel1.Width) / 2
-        Panel1.Top = (Screen.PrimaryScreen.WorkingArea.Height - Panel1.Height) / 2
+        ' need to center all controls
+        'Me.Left = (Screen.PrimaryScreen.WorkingArea.Width - Me.Width) / 2
+        'Me.Top = (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) / 2
 
         Dim strSaltedMD5LicenseKey As String
         Dim LicenseKeyFile As StreamReader
@@ -82,7 +83,7 @@ Public Class frmFPhotoM
         'SetEnabled()
     End Sub
 
-    Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub ComboBox_Drives_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Drives.SelectedIndexChanged
         Dim split_drive_letter As String()
         Dim extract_drive_letter As String
         Dim last_split As Integer
@@ -128,7 +129,7 @@ Public Class frmFPhotoM
         End If
     End Sub
 
-    Private Sub DirectoryTreeView_AfterExpand(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeViewEventArgs)
+    Private Sub DirectoryTreeView_AfterExpand(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles DirectoryTreeView.AfterExpand
         Dim n As System.Windows.Forms.TreeNode
         For Each n In e.Node.Nodes
             LoadDir(n.Tag, n)
@@ -158,7 +159,7 @@ Public Class frmFPhotoM
     End Sub
 
     ' Changed from Public to private
-    Private Sub DirectoryTreeView_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs)
+    Private Sub DirectoryTreeView_AfterSelect(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles DirectoryTreeView.AfterSelect
         Dim split1 As String()
         Dim number_of_split As Integer
 
@@ -181,7 +182,7 @@ Public Class frmFPhotoM
         End Try
     End Sub
 
-    Private Sub cmdCategory_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub cmdCategory_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCategory.SelectedIndexChanged
         Select Case (cmdCategory.SelectedItem.ToString)
             Case "ALPHA SECTOR"
                 Populate_Alpha()
@@ -276,7 +277,7 @@ Public Class frmFPhotoM
         End Try
     End Sub
 
-    Private Sub cmdFileSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub cmdFileSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdFileSelect.Click
         CheckListFileSelect()
     End Sub
 
@@ -293,7 +294,7 @@ Public Class frmFPhotoM
         End Try
     End Sub
 
-    Private Sub DestinationFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub DestinationFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DestinationFolder.Click
         SelectDestinationFolder()
     End Sub
 
@@ -403,7 +404,7 @@ Public Class frmFPhotoM
         Next search_row
     End Sub
 
-    Private Sub COPY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub COPY_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COPY.Click
         SuperCOPY()
     End Sub
 
@@ -757,7 +758,7 @@ Public Class frmFPhotoM
         End If
     End Sub
 
-    Private Sub ListView1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub ListView1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListView1.SelectedIndexChanged
         Dim i As Integer
         Dim listViewItem1 As ListViewItem
         Dim fname As String
@@ -784,7 +785,7 @@ Public Class frmFPhotoM
 
     End Sub
 
-    Private Sub ListView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub ListView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles ListView1.DoubleClick
         Dim exec_string As String
         Dim windir As String
         windir = Environment.GetEnvironmentVariable("windir")
@@ -793,13 +794,13 @@ Public Class frmFPhotoM
 
     End Sub
 
-    Private Sub Browse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub Browse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Browse.Click
         OpenFileDialog2.FileName = Nothing
         OpenFileDialog2.InitialDirectory = txtDestinationFolder.Text
         OpenFileDialog2.ShowDialog()
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
         If CheckBox1.CheckState = 1 Then
             Try
                 FolderBrowserDialog1.SelectedPath = user_folder_desktop
