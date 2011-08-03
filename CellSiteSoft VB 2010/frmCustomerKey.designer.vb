@@ -59,8 +59,8 @@ Partial Class frmCustomerKey
         Me.RichTextBox1.Size = New System.Drawing.Size(297, 128)
         Me.RichTextBox1.TabIndex = 2
         Me.RichTextBox1.Text = "Thank you so much for your purchase of a TRB Software product. Please e-mail or c" & _
-            "all our Sale Department to get the License Key. You will need to provide the inf" & _
-            "ormation below."
+            "all our Sales Department to get the License Key. You will need to provide the in" & _
+            "formation below."
         '
         'Label1
         '
@@ -81,7 +81,7 @@ Partial Class frmCustomerKey
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.Size = New System.Drawing.Size(297, 104)
         Me.RichTextBox2.TabIndex = 4
-        Me.RichTextBox2.Text = "TRB Software, Inc." & Global.Microsoft.VisualBasic.ChrW(10) & "PO Box 91414" & Global.Microsoft.VisualBasic.ChrW(10) & "Long Beach, CA 90809" & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(10) & "562.858.0830" & Global.Microsoft.VisualBasic.ChrW(10) & "license@trbsof" & _
+        Me.RichTextBox2.Text = "TRB Software, Inc." & Global.Microsoft.VisualBasic.ChrW(10) & "PO Box 91414" & Global.Microsoft.VisualBasic.ChrW(10) & "Long Beach, CA 90809" & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(10) & "562.888.3349" & Global.Microsoft.VisualBasic.ChrW(10) & "license@trbsof" & _
             "t.com"
         '
         'Label2
@@ -89,9 +89,9 @@ Partial Class frmCustomerKey
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(286, 207)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(92, 13)
+        Me.Label2.Size = New System.Drawing.Size(80, 13)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "CUSTOMER KEY"
+        Me.Label2.Text = "MACHINE KEY"
         '
         'Button2
         '
