@@ -32,9 +32,15 @@ Public Class frmFPhotoM
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        ' need to center all controls
-        'Me.Left = (Screen.PrimaryScreen.WorkingArea.Width - Me.Width) / 2
-        'Me.Top = (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) / 2
+
+        'Set timer and test that the software runs less than 365 days
+        If Not DateGood(365) Then
+            MsgBox("Trial Period Expired!", vbExclamation, "Unregistered application")
+            Me.Hide() 'Hide if not
+        Else
+            Me.Show() 'Show if good
+        End If
+
 
         Dim strSaltedMD5LicenseKey As String
         Dim LicenseKeyFile As StreamReader
@@ -57,7 +63,7 @@ Public Class frmFPhotoM
         If strSerialInput = strSaltedMD5LicenseKey Then
             ' FULL VERSION reading LicenseKey.txt (need to work on yearly expiration)
         Else
-            demosoft() ' DEMO VERSION see modDemo
+            demosoft() ' DEMO VERSION see modDemo.vb
         End If
 
         user_folder_desktop = Environment.GetEnvironmentVariable("UserProfile") & "\Desktop"

@@ -75,4 +75,5 @@ Public Class frmCustomerKey
         CreatejSDate()
         MessageBox.Show("Unable to connect to Online Registration Server. Please call 562.858.0830. Thank you.", "Connection Error")
     End Sub
+
 End Class
