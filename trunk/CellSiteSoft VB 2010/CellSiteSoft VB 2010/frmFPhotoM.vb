@@ -33,14 +33,6 @@ Public Class frmFPhotoM
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
 
-        'Set timer and test that the software runs less than 365 days
-        If Not DateGood(365) Then
-            MsgBox("Trial Period Expired!", vbExclamation, "Unregistered application")
-            Me.Hide() 'Hide if not
-        Else
-            Me.Show() 'Show if good
-        End If
-
 
         Dim strSaltedMD5LicenseKey As String
         Dim LicenseKeyFile As StreamReader
@@ -60,7 +52,7 @@ Public Class frmFPhotoM
         End Try
 
         ' test extLIC input against internal TRB Protection Algorithm
-        If strSerialInput = strSaltedMD5LicenseKey Then
+        If strSerialInput = strSaltedMD5LicenseKey And YearTest(365) = True Then
             ' FULL VERSION reading LicenseKey.txt (need to work on yearly expiration)
         Else
             demosoft() ' DEMO VERSION see modDemo.vb

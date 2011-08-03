@@ -2,7 +2,7 @@
 ' ASSIGN TO: Bounrith Ly
 ' TODO: this is too weak, secure further with registry integration/deal with Windows Registry and UAC
 
-
+Imports System.IO
 
 Module modDemo
 
@@ -38,56 +38,30 @@ Module modDemo
     End Sub
 
 
+    Public Function YearTest(ByVal NumDays As Integer) As Boolean
+        Dim txtjSDate As String
+        Dim jSDateFileR As StreamReader
+        Dim jsDateFileW As StreamWriter
 
-    Public Function DateGood(ByVal NumDays As Integer) As Boolean
 
-        'The purpose of this module is <strong class="highlight">to</strong> allow you <strong class="highlight">to</strong> place a time
-        'limit on the unregistered use of your shareware application.
-        'This module can not be defeated by rolling back the system clock.
-        'Simply call the DateGood function when your application is first
-        'loading, passing it the number of days it can be used without
-        'registering.
-        '
-        'Ex: If DateGood(30)=False Then
-        ' CrippleApplication
-        ' End if
-        'Register Parameters:
-        ' CRD: Current Run Date
-        ' LRD: Last Run Date
-        ' FRD: First Run Date
-
-        Dim TmpCRD As Date
-        Dim TmpLRD As Date
-        Dim TmpFRD As Date
-
-        TmpCRD = Format(Now, "m/d/yy")
-        TmpLRD = GetSetting(Application.ExecutablePath, "Param", "LRD", "1/1/2011")
-        TmpFRD = GetSetting(Application.ExecutablePath, "Param", "FRD", "1/1/2011")
-
-        DateGood = False
-
-        'If this is the applications first load, write initial settings
-        '<strong class="highlight">to</strong> the register
-        If TmpLRD = "1/1/2011" Then
-            SaveSetting(Application.ExecutablePath, "Param", "LRD", TmpCRD)
-            SaveSetting(Application.ExecutablePath, "Param", "FRD", TmpCRD)
-        End If
-        'Read LRD and FRD from register
-        TmpLRD = GetSetting(Application.ExecutablePath, "Param", "LRD", "1/1/2011")
-        TmpFRD = GetSetting(Application.ExecutablePath, "Param", "FRD", "1/1/2011")
-
-        If TmpFRD > TmpCRD Then 'System clock rolled back
-            DateGood = False
-        ElseIf Now > DateAdd("d", NumDays, TmpFRD) Then 'Expiration expired
-            DateGood = False
-        ElseIf TmpCRD > TmpLRD Then 'Everything OK write New LRD date
-            SaveSetting(Application.ExecutablePath, "Param", "LRD", TmpCRD)
-            DateGood = True
-        ElseIf TmpCRD = Format(TmpLRD, "m/d/yy") Then
-            DateGood = True
+        If File.Exists("jSDate.xml") Then
+            jSDateFileR = File.OpenText("jSDate.xml")
+            txtjSDate = jSDateFileR.ReadLine()
+            jSDateFileR.Close()
         Else
-            DateGood = False
+            jsDateFileW = File.CreateText("jSDate.xml")
+            jsDateFileW.WriteLine(DateToJDate(System.DateTime.Now()))
+            jsDateFileW.Close()
         End If
+
+        Dim jsDatePass = txtjSDate + 365
+
+        If DateToJDate(System.DateTime.Now()) - jsDatePass > 10 Then
+            YearTest = False ' program will go into Demo mode after 375 days of usage w/ 10 days grace period
+        Else
+            YearTest = True ' program is still within 365 days license
+        End If
+
     End Function
 
 End Module
