@@ -14,7 +14,7 @@ Module modLicense
     End Function
 
     ' convert Gregorian Date to Julian Date
-    Public Function DateToJDate(ByVal TheDate As Date) As String ' why can't this be shared function
+    Public Function DateToJDate(ByVal TheDate As Date) As String
         Dim TheYear As Integer
         Dim TheDays As Integer
         Dim JDate As String

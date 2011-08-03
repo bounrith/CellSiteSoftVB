@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports System.Xml
-
 Imports System.Net.NetworkInformation
 
 Public Class frmCustomerKey
