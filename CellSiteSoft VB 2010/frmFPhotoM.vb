@@ -32,6 +32,8 @@ Public Class frmFPhotoM
 
     Private Sub CellSiteSoftMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        ToolStripStatusLabel1.Text = getMacAddress()
+        ToolStripStatusLabel2.Text = System.DateTime.Now.ToString()
 
 
         Dim strSaltedMD5LicenseKey As String
@@ -894,6 +896,9 @@ Public Class frmFPhotoM
     End Sub
     ' END MENU ITEM STRIP CONTROL
 
+    Private Sub ToolStripStatusLabel3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripStatusLabel3.Click
+        System.Diagnostics.Process.Start("www.trbsoft.com/support")
+    End Sub
 End Class
 
 
