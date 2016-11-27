@@ -26,7 +26,6 @@ Module modLicense
         Return JDate
     End Function
 
-    ' http://www.nonhostile.com/howto-calculate-md5-hash-string-vb-net.asp
     ' calculate the MD5 hash of a given string 
     ' the string is first converted to a byte array
     Public Function MD5CalcString(ByVal strData As String) As String
