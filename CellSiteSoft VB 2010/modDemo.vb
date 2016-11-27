@@ -10,7 +10,7 @@ Module modDemo
     Dim times_used As Integer = 1 'initializing times_used
     Dim max_limit As Integer = 10 'set the maximum number of times
 
-    'http://vbdotnetforum.com/index.php?/topic/31-make-trial-version-of-software/
+
     Public Sub demosoft()
         filenumber = FreeFile() 'We assign the number which represents which file to open
         If IO.File.Exists("DemoMe.xml") Then 'Checking if file exists..
